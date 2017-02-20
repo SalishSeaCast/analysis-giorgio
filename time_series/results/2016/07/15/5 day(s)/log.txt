@@ -1141,6 +1141,7 @@
  
   - vovecrtz: max   0.26861089468002319       min  -0.27061253786087036     
   - Vertical Transport: max    59063.268328050493       min   -59515.382534395663     
+ Slow mo
  ---------------------------------
  - READ INPUT DATA :          96 -
   - vozocrtx: max    2.7083058357238770       min   -1.9982863664627075     
@@ -1419,7 +1420,7 @@
  = Deallocate Memory =
  ---------------------
  
-  Ariane max allocatable memory is (in MB):    788.31949234008789     
+  Ariane max allocatable memory is (in MB):    788.31987380981445     
  
  =====================================================
  =             -o0)  ARIANE Finish  (0o-             =
