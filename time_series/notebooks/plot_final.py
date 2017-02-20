@@ -384,7 +384,7 @@ def savefig(start, length, fig):
 
     
 start = 1   
-trajlength = 30
+trajlength = 100
 
 first_date = dt.datetime(year = 2016, month = 7, day = 1)
 
