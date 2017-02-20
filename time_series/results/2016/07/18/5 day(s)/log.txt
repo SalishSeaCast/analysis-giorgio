@@ -1387,6 +1387,7 @@
  -> Netcdf File - Successful Closing - ncid =     1048576
  
   - Vertical Transport: max    58092.370690779251       min   -44067.004135481635     
+ Slow mo
  
  ==================================
  = MAIN LOOP ON CYCLE >>>>>> EXIT =
@@ -1419,7 +1420,7 @@
  = Deallocate Memory =
  ---------------------
  
-  Ariane max allocatable memory is (in MB):    788.31949234008789     
+  Ariane max allocatable memory is (in MB):    788.31987380981445     
  
  =====================================================
  =             -o0)  ARIANE Finish  (0o-             =

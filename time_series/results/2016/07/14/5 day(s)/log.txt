@@ -1419,7 +1419,7 @@
  = Deallocate Memory =
  ---------------------
  
-  Ariane max allocatable memory is (in MB):    788.31949234008789     
+  Ariane max allocatable memory is (in MB):    788.31987380981445     
  
  =====================================================
  =             -o0)  ARIANE Finish  (0o-             =
