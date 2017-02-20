@@ -1,1 +1,0 @@
-/results/SalishSea/nowcast-green/17sep16/SalishSea_1h_20160917_20160917_grid_U.nc
