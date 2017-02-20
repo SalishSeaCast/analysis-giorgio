@@ -93,7 +93,7 @@ def main(first_date, tlength):
         file.write(errormsg.format(**ferrormsg)) 
 
     with open(resultsdir + "/log.txt", 'w') as file:
-        file.write(log) 
+        file.write(log)
 
     return (fdate, "error: {}".format(error))
     
