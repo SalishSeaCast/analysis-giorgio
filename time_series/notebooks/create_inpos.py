@@ -1,4 +1,8 @@
-303 445 24.5 1 1.0
+
+# In[27]:
+
+def initp(directory):
+    txt = """303 445 24.5 1 1.0
 303 445 25.5 2 1.0
 303 445 26.5 3 1.0
 303 445 24.5 4 1.0
@@ -21,4 +25,30 @@
 303 445 26.5 21 1.0
 303 445 24.5 22 1.0
 303 445 25.5 23 1.0
-303 445 26.5 24 1.0
+303 445 26.5 24 1.0"""
+    
+    file = open (directory + "/initial_positions.txt", "w")
+    file.write(txt)
+    
+    print ("initial_positions.txt created in ", directory)
+
+
+# In[28]:
+
+
+
+
+# In[ ]:
+
+
+
+
+# In[24]:
+
+
+
+
+# In[ ]:
+
+
+

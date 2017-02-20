@@ -24,7 +24,7 @@ def make_sure_path_exists(path):
         if exception.errno != errno.EEXIST:
             raise
 
-def createdirs (first_date, tlength, basedir = "/ocean/gsgarbi/analysis-giorgio/"):
+def createdirs (first_date, tlength, basedir = "/ocean/gsgarbi/analysis-giorgio/time_series/"):
 
 
   
@@ -33,16 +33,13 @@ def createdirs (first_date, tlength, basedir = "/ocean/gsgarbi/analysis-giorgio/
 
     arianedir = basedir + "arianefiles/" + fdate
     resultsdir = basedir + "results/" + fdate
-    errordir = basedir + "errors/" + fdate
 
     make_sure_path_exists(arianedir)
 
     make_sure_path_exists(resultsdir)
     
-    make_sure_path_exists(errordir)
-    
         
     print ("directories ", arianedir, resultsdir, "created")
     
-    return {'arianedir': arianedir, 'resultsdir': resultsdir, 'errordir': errordir}
+    return {'arianedir': arianedir, 'resultsdir': resultsdir}
     
