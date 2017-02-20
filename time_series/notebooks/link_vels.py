@@ -58,7 +58,10 @@ def linkfiles (vel, n, date, directory):
 
         src = "/results/SalishSea/nowcast-green/{0}{1}{7}/SalishSea_1h_{8}{2}{3}_{8}{4}{5}_grid_{6}.nc".format(*source)
 
-        fi = sadd0(i)
+        fi = str(i)
+        
+        while len(fi) != len(str(n)):
+            fi = "0"+fi
         dst = directory + "/SalishSea_{}_grid_{}.nc".format(fi, vel)
 
 

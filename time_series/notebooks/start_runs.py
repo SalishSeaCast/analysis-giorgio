@@ -52,7 +52,7 @@ def main(first_date, tlength):
 
     #copy results
     src = arianedir + "/traj.txt"
-    dst = resultsdir + "/traj_{}.txt".format(tlength)   
+    dst = resultsdir + "/traj.txt".format(tlength)   
     copyfile(src, dst)
     
     
@@ -97,17 +97,13 @@ def main(first_date, tlength):
 
     return (fdate, "error: {}".format(error))
     
-    
-    
-
-    
 
 
     
 def runlength (day, trajlength, runlength):
           
     infos = []
-    for i in range(runlength):
+    for i in range(runlength+1):
         first_date = dt.datetime(
                  year = day["year"], 
                  month = day["month"], 
