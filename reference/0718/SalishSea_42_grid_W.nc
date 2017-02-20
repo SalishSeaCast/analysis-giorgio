@@ -1,0 +1,1 @@
+/results/SalishSea/nowcast-green/28aug16/SalishSea_1h_20160828_20160828_grid_W.nc

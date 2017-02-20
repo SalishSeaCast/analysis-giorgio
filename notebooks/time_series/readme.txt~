@@ -1,0 +1,12 @@
+Edit inp.txt
+	format: YYYY MM DD l tl
+	where	l is the number of initial days
+		tl is the trajectory length
+
+example:
+
+2016 10 12 3 5 will run starting on Oct 12, 2016, ending on Oct Oct 16, 2016, with trajectory being 5 days long.
+
+
+the program will produce a results directory, where you can see the final results (traj.txt),
+and an error directory, where you can see the erros Ariane encountered (if any)
