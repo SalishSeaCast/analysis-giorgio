@@ -2,3 +2,6 @@ syntax: glob
 arianefiles/**
 .ipynb_checkpoints
 **~
+__pycache__/**
+results/**
+

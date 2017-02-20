@@ -2,32 +2,11 @@ import time
 import datetime as dt
 from shutil import copyfile
 
-import numpy as np
-
-from createdirs import createdirs
-from createnl import namelist
+from create_dirs import createdirs
+from create_namelist import namelist
 from create_inpos import initp
-from linkvel import link as link
-from handle_error import check_error
-
-
-inp = np.loadtxt("/ocean/gsgarbi/analysis-giorgio/notebooks/time_series/inptest.txt", delimiter = ' ')
-
-values = [int(x) for x in inp]
-       
-keys = ["year", "month", "day", "tlength", "length"]
-
-date_input = dict(zip(keys, values))
-
-first_date = dt.datetime(
-                 year = date_input["year"], 
-                 month = date_input["month"], 
-                 day = date_input["day"]
-                 )
-
-tlength = date_input["tlength"] 
-
-length = date_input["length"] 
+from link_vels import link as link
+from run_ariane import check_error
 
 
     
@@ -125,16 +104,16 @@ def main(first_date, tlength):
 
 
     
-def runlength (length):
+def runlength (day, trajlength, runlength):
           
     infos = []
-    for i in range(length):
+    for i in range(runlength):
         first_date = dt.datetime(
-                 year = date_input["year"], 
-                 month = date_input["month"], 
-                 day = date_input["day"] + i
+                 year = day["year"], 
+                 month = day["month"], 
+                 day = day["day"] + i
                  )
-        info = main(first_date, tlength)
+        info = main(first_date, trajlength)
         
         infos.append(info)
  
@@ -147,11 +126,6 @@ def runlength (length):
                "xxxxxxxxxxxxxxx\n")
         
     time.sleep(3)
-        
-
-     
-if __name__ == "__main__":
-    runlength(length)
         
 
 
