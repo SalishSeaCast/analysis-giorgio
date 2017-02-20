@@ -1,0 +1,1432 @@
+ 
+  If Ariane results are used in your publication(s),
+ please feel free to reference Ariane and to send us 
+        your publication references (thanks).
+ 
+         http://www.univ-brest.fr/lpo/ariane
+ 
+ =====================================================
+ =             -o0)  ARIANE v2.2.6_00  (0o-             =
+ =====================================================
+ 
+        (Ariane is governed by the CeCILL license)
+                (http://www.cecill.info)
+ 
+ ============
+ = NAMELIST =
+ ============
+  --- Successful Opening ---
+ 
+  - Reading ARIANE item:
+    - key_roms            =  F
+    - key_symphonie       =  F
+    - key_B2C_grid        =  F
+    - key_sequential      =  T
+    - key_alltracers      =  F
+    - key_ascii_outputs   =  T
+    - key_iU_jV_kW        =  F
+    - mode                = qualitative
+    - forback             = forward
+    - bin                 = nobin
+    - nmax                =           50
+    - tunit               =    3600.0000000000000     
+    - ntfic               =            1
+    - tcyc                = "value will be computed later"
+    - key_approximatesigma (OBSOLETE and FORCED)= T
+    - key_computesigma    = F
+    - memory_log          = T
+    - output_netcdf_large_file= F
+ 
+  - Reading SEQUENTIAL item:
+    - key_interp_temporal = F
+    - maxcycles           =           1
+ 
+  - Reading OPAPARAM item:
+    - imt                 =         398
+    - jmt                 =         898
+    - kmt                 =          40
+    - lmt                 =         120
+    - key_computew        = F
+    - key_partialsteps    = T
+    - key_jfold           = F
+    - pivot               =T
+    - key_periodic        = F
+    - w_surf_option       =     
+ 
+  - Reading ZONALCRT item:
+    - c_dir_zo            = /ocean/gsgarbi/analysis-giorgio/time_series/arianefiles/2016/07/25/5 day(s)
+    - c_prefix_zo         = SalishSea_
+    - ind0_zo             =            1
+    - indn_zo             =            5
+    - maxsize_zo          =            2
+    - c_suffix_zo         = _grid_U.nc
+    - nc_var_zo           = vozocrtx
+    - nc_var_eivu         = NONE
+    - nc_att_mask_zo      = NONE
+ 
+  - Reading MERIDCRT item:
+    - c_dir_me            = /ocean/gsgarbi/analysis-giorgio/time_series/arianefiles/2016/07/25/5 day(s)
+    - c_prefix_me         = SalishSea_
+    - ind0_me             =            1
+    - indn_me             =            5
+    - maxsize_me          =            2
+    - c_suffix_me         = _grid_V.nc
+    - nc_var_me           = vomecrty
+    - nc_var_eivv         = NONE
+    - nc_att_mask_me      = NONE
+ 
+  - Reading VERTICRT item:
+    - c_dir_ve            = /ocean/gsgarbi/analysis-giorgio/time_series/arianefiles/2016/07/25/5 day(s)
+    - c_prefix_ve         = SalishSea_
+    - ind0_ve             =            1
+    - indn_ve             =            5
+    - maxsize_ve          =            2
+    - c_suffix_ve         = _grid_W.nc
+    - nc_var_ve           = vovecrtz
+    - nc_var_eivw         = NONE
+    - nc_att_mask_ve      = NONE
+ 
+  - Reading MESH item:
+    - dir_mesh            = /ocean/eolson/MEOPAR/NEMO-forcing/grid
+    - fn_mesh             = mesh_mask_downbyone2.nc
+    - nc_var_xx_tt        = glamt
+    - nc_var_xx_uu        = glamu
+    - nc_var_yy_tt        = gphit
+    - nc_var_yy_vv        = gphiv
+    - nc_var_zz_ww        = gdepw_0
+    - nc_var_e2u          = e2u
+    - nc_var_e1v          = e1v
+    - nc_var_e1t          = e1t
+    - nc_var_e2t          = e2t
+    - nc_var_e3t          = e3t_0
+    - nc_var_tmask        = tmask
+    - nc_mask_val         =    0.0000000000000000     
+ 
+  - Reading QUALITATIVE item:
+    - delta_t             =   1200.0000000000000     
+    - frequency           =           1
+    - nb_output           =         360
+    - key_region          = F
+    - mask                = F
+ 
+  - More:
+      - tcyc                =   432000.00000000000     
+ 
+                           -
+                          ---
+                        -------
+                      -----------
+                 -<>- QUALITATIVE -<>-
+                      -----------
+                        -------
+                          ---
+                           -
+ 
+ =======================
+ = criter0 source code =
+ =======================
+    !- ADD AT THE END OF EACH LINE "!!ctr0" -!
+    criter0=.TRUE.        !!ctr0
+ 
+ =======================
+ = criter1 source code =
+ =======================
+    !- ADD AT THE END OF EACH LINE "!!ctr1" -!
+    criter1=.FALSE.                 !! ctr1
+ 
+ =======================
+ = criter2 source code =
+ =======================
+    criter2=.FALSE.    !!ctr2
+ 
+ ========================
+ = Opening Output files =
+ ========================
+   - ASCII files -
+     - init.sav
+     - final.sav
+     - output
+     - traj.txt
+ 
+ ===================
+ = INPUT GRID DATA =
+ ===================
+ 
+ -> Netcdf File - Successful Opening -/ocean/eolson/MEOPAR/NEMO-forcing/grid/mesh_mask_downbyone2.nc - ncid =        65536
+ TRIM(nc_var_name) = glamt
+  - glamt: max   -121.31835174560547       min   -126.40029144287109     
+ TRIM(nc_var_name) = glamu
+  - glamu: max   -121.31569671630859       min   -126.39742279052734     
+ TRIM(nc_var_name) = gphit
+  - gphit: max    51.104801177978516       min    46.859664916992188     
+ TRIM(nc_var_name) = gphiv
+  - gphiv: max    51.106704711914063       min    46.861225128173828     
+ TRIM(nc_var_name) = gdepw_0
+  - gdepw_0: max    454.93237304687500       min    0.0000000000000000     
+ TRIM(nc_var_name) = e2u
+  - e2u: max    466.74507444089966       min    363.94904779512996     
+ TRIM(nc_var_name) = e1v
+  - e1v: max    515.85902528155225       min    407.48390875469261     
+ TRIM(nc_var_name) = e1t
+  - e1t: max    515.87895087684115       min    397.13668320522572     
+ TRIM(nc_var_name) = e2t
+  - e2t: max    467.34628117198633       min    364.77778594178443     
+ TRIM(nc_var_name) = e3t_0
+  - e3t_0: max    53.863923895216146       min   0.22453753716978384     
+ TRIM(nc_var_name) = tmask
+  - tmask: max    1.0000000000000000       min    0.0000000000000000     
+ -> Netcdf File - Successful Closing - ncid =       65536
+ 
+  
+ 
+ =====================================================
+ = ALLOCATE INPUT GEOPHYSICAL DATA (sequential mode) =
+ =====================================================
+ 
+ ===============================
+ = INITIAL PARTICULE POSITIONS =
+ ===============================
+        (read or computed)
+   - Computing lmin in qualitative mode...
+     - lmin =           1
+ 
+ =================================================
+ = Create and Define NetCDF ouput POSITIONS file =
+ =================================================
+ --- Successful creation of ariane_trajectories_qualitative.nc ---       65536
+   - Dimensions in qualitative are:
+     - ntraj     =          24
+     - nb_output =         361
+ 
+   - Initial Positions in x are defined           1
+   - Initial Positions in y are defined           2
+   - Initial Positions in z are defined           3
+   - Initial Positions in t are defined           4
+   - Initial Ages are defined           5
+   - Initial transports are defined           6
+   - Final Positions in x are defined           7
+   - Final Positions in y are defined           8
+   - Final Positions in z are defined           9
+   - Final Positions in t are defined          10
+   - Final Ages are defined
+   - Final transports are defined          12
+   - Positions in x for trajectories are defined          13
+   - Positions in y for trajectories are defined          14
+   - Positions in z for trajectories are defined          15
+   - Positions in time for trajectories are defined          16
+   --- Dimension definitions are finished ---
+ 
+ ==================================
+ = ENTER >>>>> MAIN LOOP ON CYCLE =
+ ==================================
+
+ >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+  PARTICULE TRAJECTORIES will be computed:
+     - number of trajectories         :           24
+ <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+ ---------------------------------
+ - READ INPUT DATA :           1 -
+ 
+ -> Netcdf File - Successful Opening -/ocean/gsgarbi/analysis-giorgio/time_series/arianefiles/2016/07/25/5 day(s)/SalishSea_01_grid_U.nc - ncid =       131072
+ TRIM(nc_var_name) = vozocrtx
+  - vozocrtx: max    3.6379404067993164       min   -2.6987018585205078     
+  - Transport U: max    20834.244326019525       min   -14519.060071947550     
+ 
+ -> Netcdf File - Successful Opening -/ocean/gsgarbi/analysis-giorgio/time_series/arianefiles/2016/07/25/5 day(s)/SalishSea_01_grid_V.nc - ncid =       196608
+ TRIM(nc_var_name) = vomecrty
+  - vomecrty: max    2.9786846637725830       min   -5.9292836189270020     
+  - Transport V: max    27585.438246206995       min   -27812.806591904515     
+ 
+ 
+ -> Netcdf File - Successful Opening -/ocean/gsgarbi/analysis-giorgio/time_series/arianefiles/2016/07/25/5 day(s)/SalishSea_01_grid_W.nc - ncid =       262144
+ TRIM(nc_var_name) = vovecrtz
+  - vovecrtz: max   0.19862847030162811       min  -0.17568229138851166     
+  - Vertical Transport: max    43675.245015621331       min   -38479.919382588829     
+ 
+ --- Initial positions are saving:        65536
+   - Initial X is done
+   - Initial Y is done
+   - Initial Z is done
+   - Initial Time is done
+   - Initial Age is done
+   - Initial Transport is done
+ ---------------------------------
+ - READ INPUT DATA :           2 -
+  - vozocrtx: max    3.3593373298645020       min   -2.4797132015228271     
+  - Transport U: max    23651.635495740644       min   -18584.831718350106     
+  - vomecrty: max    2.8867149353027344       min   -5.4449086189270020     
+  - Transport V: max    31035.383063062294       min   -25633.254964695359     
+ 
+  - vovecrtz: max   0.22969479858875275       min  -0.28000634908676147     
+  - Vertical Transport: max    50506.237056266240       min   -61581.348409384969     
+ ---------------------------------
+ - READ INPUT DATA :           3 -
+  - vozocrtx: max    2.7849478721618652       min   -2.1184682846069336     
+  - Transport U: max    23463.059875455834       min   -19278.438898250020     
+  - vomecrty: max    2.5301632881164551       min   -4.2499403953552246     
+  - Transport V: max    31590.340099291268       min   -20083.076279763598     
+ 
+  - vovecrtz: max   0.22680044174194336       min  -0.18737909197807312     
+  - Vertical Transport: max    49813.448702475987       min   -41209.983935615950     
+ ---------------------------------
+ - READ INPUT DATA :           4 -
+  - vozocrtx: max    1.9874519109725952       min   -1.7109525203704834     
+  - Transport U: max    21114.820229265275       min   -17462.257980965172     
+  - vomecrty: max    2.1641983985900879       min   -2.2542092800140381     
+  - Transport V: max    27158.950446812749       min   -15648.360546547761     
+ 
+  - vovecrtz: max   0.20649074018001556       min  -0.18119002878665924     
+  - Vertical Transport: max    45352.715428998461       min   -39835.082917398649     
+ ---------------------------------
+ - READ INPUT DATA :           5 -
+  - vozocrtx: max    1.7223465442657471       min   -1.6479882001876831     
+  - Transport U: max    15039.763366224688       min   -16268.639950943143     
+  - vomecrty: max    1.8506011962890625       min   -1.2051467895507813     
+  - Transport V: max    22757.785801566570       min   -11096.104718683568     
+ 
+  - vovecrtz: max   9.65509340167045593E-002  min  -0.14480601251125336     
+  - Vertical Transport: max    21206.021301711622       min   -32055.863944062825     
+ ---------------------------------
+ - READ INPUT DATA :           6 -
+  - vozocrtx: max    2.2346529960632324       min   -2.4641287326812744     
+  - Transport U: max    11515.868530333530       min   -13552.877758526847     
+  - vomecrty: max    3.9349589347839355       min   -1.8445662260055542     
+  - Transport V: max    18722.376097053922       min   -11572.402892077906     
+ 
+  - vovecrtz: max   0.11726929992437363       min  -0.10185427218675613     
+  - Vertical Transport: max    24707.477050395191       min   -21353.515950444140     
+ ---------------------------------
+ - READ INPUT DATA :           7 -
+  - vozocrtx: max    2.7044899463653564       min   -3.1027622222900391     
+  - Transport U: max    16106.758044570419       min   -17664.272880164972     
+  - vomecrty: max    5.2503271102905273       min   -2.6237649917602539     
+  - Transport V: max    24899.335320975919       min   -16250.501175537860     
+ 
+  - vovecrtz: max   0.14953301846981049       min  -0.10243084281682968     
+  - Vertical Transport: max    31505.122180330069       min   -21474.392668538585     
+ ---------------------------------
+ - READ INPUT DATA :           8 -
+  - vozocrtx: max    2.7737500667572021       min   -3.1587839126586914     
+  - Transport U: max    16474.863225110897       min   -17890.355845776125     
+  - vomecrty: max    5.3159213066101074       min   -2.6900925636291504     
+  - Transport V: max    25110.758711847269       min   -18211.128021561763     
+ 
+  - vovecrtz: max   0.15142002701759338       min  -0.10664876550436020     
+  - Vertical Transport: max    31902.696144004385       min   -23415.991154349831     
+ ---------------------------------
+ - READ INPUT DATA :           9 -
+  - vozocrtx: max    2.3059048652648926       min   -2.6887259483337402     
+  - Transport U: max    13661.296939179869       min   -17115.186565758559     
+  - vomecrty: max    4.4049649238586426       min   -2.5664446353912354     
+  - Transport V: max    20761.869111178676       min   -19938.302086264601     
+ 
+  - vovecrtz: max   0.14645721018314362       min  -0.14490671455860138     
+  - Vertical Transport: max    32085.257539535032       min   -31815.973961474330     
+ ---------------------------------
+ - READ INPUT DATA :          10 -
+  - vozocrtx: max    1.6672210693359375       min   -2.4775424003601074     
+  - Transport U: max    9130.2442720217514       min   -16686.798576358815     
+  - vomecrty: max    2.6496698856353760       min   -2.2398684024810791     
+  - Transport V: max    12478.368444563270       min   -18634.200857093849     
+ 
+  - vovecrtz: max   0.11677958816289902       min  -0.10449791699647903     
+  - Vertical Transport: max    25692.417270914353       min   -22960.160605145818     
+ ---------------------------------
+ - READ INPUT DATA :          11 -
+  - vozocrtx: max    1.1691948175430298       min   -2.0163431167602539     
+  - Transport U: max    8292.4748946420732       min   -12440.406852466065     
+  - vomecrty: max    1.4199445247650146       min   -1.9367090463638306     
+  - Transport V: max    7857.1253928679207       min   -14997.192363406368     
+ 
+  - vovecrtz: max   7.84511119127273560E-002  min  -0.13489554822444916     
+  - Vertical Transport: max    17264.150760616005       min   -29701.233503103536     
+ ---------------------------------
+ - READ INPUT DATA :          12 -
+  - vozocrtx: max    2.0310425758361816       min   -1.8181360960006714     
+  - Transport U: max    11936.407981505317       min   -9080.8893056463876     
+  - vomecrty: max    1.2684019804000854       min   -3.3434920310974121     
+  - Transport V: max    10363.776856602213       min   -15515.084091612634     
+ 
+  - vovecrtz: max   8.64682048559188843E-002  min  -6.90426602959632874E-002
+  - Vertical Transport: max    18200.417012790458       min   -14486.046104621002     
+ ---------------------------------
+ - READ INPUT DATA :          13 -
+  - vozocrtx: max    2.9923040866851807       min   -2.2167761325836182     
+  - Transport U: max    17405.655736686309       min   -12369.295436104803     
+  - vomecrty: max    1.6261488199234009       min   -4.8833351135253906     
+  - Transport V: max    14679.591818417397       min   -22893.012038349447     
+ 
+  - vovecrtz: max   0.12293133884668350       min  -9.11174714565277100E-002
+  - Vertical Transport: max    25875.425940418765       min   -19108.308025431623     
+ ---------------------------------
+ - READ INPUT DATA :          14 -
+  - vozocrtx: max    3.1555759906768799       min   -2.3394405841827393     
+  - Transport U: max    18087.408868700724       min   -12625.056408000200     
+  - vomecrty: max    2.1643586158752441       min   -5.1280174255371094     
+  - Transport V: max    17457.627780094339       min   -24088.917533776457     
+ 
+  - vovecrtz: max   0.12555983662605286       min  -0.11806007474660873     
+  - Vertical Transport: max    27586.541715265521       min   -25862.878481684034     
+ ---------------------------------
+ - READ INPUT DATA :          15 -
+  - vozocrtx: max    2.7125246524810791       min   -2.0182385444641113     
+  - Transport U: max    15628.672656925326       min   -13245.498060135853     
+  - vomecrty: max    2.0508656501770020       min   -4.3842806816101074     
+  - Transport V: max    19554.087045201912       min   -20625.615027247150     
+ 
+  - vovecrtz: max   0.12612758576869965       min  -0.13011206686496735     
+  - Vertical Transport: max    27733.452325900522       min   -28611.237100839000     
+ ---------------------------------
+ - READ INPUT DATA :          16 -
+  - vozocrtx: max    1.7754914760589600       min   -1.3547643423080444     
+  - Transport U: max    13713.209018993044       min   -12907.058074096936     
+  - vomecrty: max    1.5209301710128784       min   -2.8473162651062012     
+  - Transport V: max    19071.164707271324       min   -13406.013878670123     
+ 
+  - vovecrtz: max   0.13184492290019989       min  -0.10603538900613785     
+  - Vertical Transport: max    28990.603929978177       min   -23308.793196685590     
+ ---------------------------------
+ - READ INPUT DATA :          17 -
+  - vozocrtx: max    1.1962951421737671       min   -1.7627035379409790     
+  - Transport U: max    11630.440423132357       min   -12354.887080849172     
+  - vomecrty: max    1.2428836822509766       min   -1.1983430385589600     
+  - Transport V: max    15922.958366442659       min   -11616.808958634581     
+ 
+  - vovecrtz: max   6.70096799731254578E-002  min  -8.87841358780860901E-002
+  - Vertical Transport: max    14734.364045598952       min   -19516.607443284356     
+ ---------------------------------
+ - READ INPUT DATA :          18 -
+  - vozocrtx: max    1.7764455080032349       min   -2.3215484619140625     
+  - Transport U: max    7596.5385913193804       min   -10508.220804938976     
+  - vomecrty: max    2.5687932968139648       min   -1.4329124689102173     
+  - Transport V: max    12966.769362462373       min   -9227.2192895017615     
+ 
+  - vovecrtz: max   8.29341039061546326E-002  min  -4.78153042495250702E-002
+  - Vertical Transport: max    17473.392186001409       min   -10516.552829149174     
+ ---------------------------------
+ - READ INPUT DATA :          19 -
+  - vozocrtx: max    2.2375352382659912       min   -2.6294751167297363     
+  - Transport U: max    13182.195322946554       min   -14687.386594865555     
+  - vomecrty: max    4.3391838073730469       min   -2.1128456592559814     
+  - Transport V: max    20451.797141774299       min   -11901.874782246057     
+ 
+  - vovecrtz: max   0.12180336564779282       min  -7.59804397821426392E-002
+  - Vertical Transport: max    25662.759676612008       min   -15929.125975539655     
+ ---------------------------------
+ - READ INPUT DATA :          20 -
+  - vozocrtx: max    2.4688642024993896       min   -2.7937641143798828     
+  - Transport U: max    14637.273133612121       min   -15791.086339660058     
+  - vomecrty: max    4.7246046066284180       min   -2.3446109294891357     
+  - Transport V: max    22218.438879029185       min   -15079.521228119256     
+ 
+  - vovecrtz: max   0.13340358436107635       min  -8.03184583783149719E-002
+  - Vertical Transport: max    28106.810573333078       min   -16870.339795284803     
+ ---------------------------------
+ - READ INPUT DATA :          21 -
+  - vozocrtx: max    2.1330432891845703       min   -2.4891674518585205     
+  - Transport U: max    12602.880479358670       min   -14050.291196784819     
+  - vomecrty: max    4.0520806312561035       min   -2.3200328350067139     
+  - Transport V: max    18990.023869925459       min   -15647.103938803755     
+ 
+  - vovecrtz: max   0.11528832465410233       min  -7.15030506253242493E-002
+  - Vertical Transport: max    24290.105231349688       min   -14984.792825546241     
+ ---------------------------------
+ - READ INPUT DATA :          22 -
+  - vozocrtx: max    1.3543332815170288       min   -2.1222121715545654     
+  - Transport U: max    7594.3841085641361       min   -11389.469513062579     
+  - vomecrty: max    2.4094283580780029       min   -2.1070399284362793     
+  - Transport V: max    11197.584314403337       min   -12147.412843258513     
+ 
+  - vovecrtz: max   6.96764141321182251E-002  min  -6.46406188607215881E-002
+  - Vertical Transport: max    14680.128594895230       min   -14164.254696489515     
+ ---------------------------------
+ - READ INPUT DATA :          23 -
+  - vozocrtx: max    1.1243758201599121       min   -1.6534560918807983     
+  - Transport U: max    7496.2633152150493       min   -7287.9691663049125     
+  - vomecrty: max    1.1857652664184570       min   -1.7363823652267456     
+  - Transport V: max    7845.9999354514384       min   -10109.789167594752     
+ 
+  - vovecrtz: max   4.55243811011314392E-002  min  -4.59005571901798248E-002
+  - Vertical Transport: max    9718.2825885576785       min   -9969.6836410553969     
+ ---------------------------------
+ - READ INPUT DATA :          24 -
+  - vozocrtx: max    2.2028219699859619       min   -1.6508516073226929     
+ -> Netcdf File - Successful Closing - ncid =      131072
+ 
+  - Transport U: max    12880.071156817807       min   -10108.525894083414     
+  - vomecrty: max    1.1808329820632935       min   -3.6109719276428223     
+ -> Netcdf File - Successful Closing - ncid =      196608
+ 
+  - Transport V: max    12312.916669261511       min   -16751.876427746385     
+ 
+  - vovecrtz: max   9.25997942686080933E-002  min  -7.47053474187850952E-002
+ -> Netcdf File - Successful Closing - ncid =      262144
+ 
+  - Vertical Transport: max    19491.035737304384       min   -16536.173392989633     
+ ---------------------------------
+ - READ INPUT DATA :          25 -
+ 
+ -> Netcdf File - Successful Opening -/ocean/gsgarbi/analysis-giorgio/time_series/arianefiles/2016/07/25/5 day(s)/SalishSea_02_grid_U.nc - ncid =       327680
+ TRIM(nc_var_name) = vozocrtx
+  - vozocrtx: max    3.1826064586639404       min   -2.3650944232940674     
+  - Transport U: max    18445.109531571339       min   -13077.429916056844     
+ 
+ -> Netcdf File - Successful Opening -/ocean/gsgarbi/analysis-giorgio/time_series/arianefiles/2016/07/25/5 day(s)/SalishSea_02_grid_V.nc - ncid =       393216
+ TRIM(nc_var_name) = vomecrty
+  - vomecrty: max    2.4338774681091309       min   -5.2034330368041992     
+  - Transport V: max    18857.288128165968       min   -24394.900629547170     
+ 
+ 
+ -> Netcdf File - Successful Opening -/ocean/gsgarbi/analysis-giorgio/time_series/arianefiles/2016/07/25/5 day(s)/SalishSea_02_grid_W.nc - ncid =       458752
+ TRIM(nc_var_name) = vovecrtz
+  - vovecrtz: max   0.12958279252052307       min  -0.12813256680965424     
+  - Vertical Transport: max    27275.469237337638       min   -26870.769299784653     
+ ---------------------------------
+ - READ INPUT DATA :          26 -
+  - vozocrtx: max    3.4005384445190430       min   -2.5146052837371826     
+  - Transport U: max    19486.147522538646       min   -14355.645388180543     
+  - vomecrty: max    2.7391548156738281       min   -5.5319967269897461     
+  - Transport V: max    24635.902127600344       min   -26016.066043543797     
+ 
+  - vovecrtz: max   0.15197357535362244       min  -0.15315009653568268     
+  - Vertical Transport: max    33416.574821273469       min   -33665.589966346313     
+ ---------------------------------
+ - READ INPUT DATA :          27 -
+  - vozocrtx: max    3.0609450340270996       min   -2.2559502124786377     
+  - Transport U: max    20998.215389070774       min   -17302.498958175416     
+  - vomecrty: max    2.6103770732879639       min   -4.9516301155090332     
+  - Transport V: max    29181.211020248087       min   -23356.999675201729     
+ 
+  - vovecrtz: max   0.18656721711158752       min  -0.21965847909450531     
+  - Vertical Transport: max    41023.167055847858       min   -48309.137904594318     
+ ---------------------------------
+ - READ INPUT DATA :          28 -
+  - vozocrtx: max    2.5216619968414307       min   -1.7847563028335571     
+  - Transport U: max    20795.950928254853       min   -17716.088370711510     
+  - vomecrty: max    2.1804702281951904       min   -3.6848356723785400     
+  - Transport V: max    28103.435061036584       min   -17427.950925925179     
+ 
+  - vovecrtz: max   0.19161114096641541       min  -0.15708519518375397     
+  - Vertical Transport: max    42132.245778878932       min   -34411.932425324398     
+ ---------------------------------
+ - READ INPUT DATA :          29 -
+  - vozocrtx: max    2.0157017707824707       min   -1.4307247400283813     
+  - Transport U: max    16348.560009568406       min   -16527.137022438117     
+  - vomecrty: max    1.9113765954971313       min   -1.6107429265975952     
+  - Transport V: max    24294.633658076837       min   -12095.031215110239     
+ 
+  - vovecrtz: max   0.13119594752788544       min  -0.11405766010284424     
+  - Vertical Transport: max    28815.299264668236       min   -25067.506505388326     
+ ---------------------------------
+ - READ INPUT DATA :          30 -
+  - vozocrtx: max    1.3449929952621460       min   -1.9315142631530762     
+  - Transport U: max    13152.940997864089       min   -15142.187851129349     
+  - vomecrty: max    1.5974584817886353       min   -1.7751945257186890     
+  - Transport V: max    19411.693940056863       min   -9893.0220123933614     
+ 
+  - vovecrtz: max   7.53644555807113647E-002  min  -9.36725959181785583E-002
+  - Vertical Transport: max    16570.030810557735       min   -20751.278496821200     
+ ---------------------------------
+ - READ INPUT DATA :          31 -
+  - vozocrtx: max    2.2610197067260742       min   -2.5933010578155518     
+  - Transport U: max    12280.498264711956       min   -14319.169949934840     
+  - vomecrty: max    4.1679325103759766       min   -2.1144614219665527     
+  - Transport V: max    19756.993820461259       min   -11496.366910301043     
+ 
+  - vovecrtz: max   0.12052203714847565       min  -0.10785808414220810     
+  - Vertical Transport: max    25392.796484955601       min   -22612.201439052253     
+ ---------------------------------
+ - READ INPUT DATA :          32 -
+  - vozocrtx: max    2.6769626140594482       min   -3.0773353576660156     
+  - Transport U: max    15926.069677685571       min   -17394.923504488816     
+  - vomecrty: max    5.1898241043090820       min   -2.6832847595214844     
+  - Transport V: max    24572.196995834933       min   -17228.197128645112     
+ 
+  - vovecrtz: max   0.14829765260219574       min  -8.47464203834533691E-002
+  - Vertical Transport: max    31244.842858780292       min   -17731.563660961318     
+ ---------------------------------
+ - READ INPUT DATA :          33 -
+  - vozocrtx: max    2.6581876277923584       min   -3.0467197895050049     
+  - Transport U: max    15774.392105886420       min   -18101.234274236806     
+  - vomecrty: max    5.0876512527465820       min   -2.7374665737152100     
+  - Transport V: max    24005.998891920357       min   -19724.317835882535     
+ 
+  - vovecrtz: max   0.14451742172241211       min  -9.75008904933929443E-002
+  - Vertical Transport: max    31029.022229938419       min   -21422.782091900131     
+ ---------------------------------
+ - READ INPUT DATA :          34 -
+  - vozocrtx: max    2.1529786586761475       min   -2.6436324119567871     
+  - Transport U: max    12736.160082510178       min   -18302.285793705145     
+  - vomecrty: max    4.1004533767700195       min   -2.7306191921234131     
+  - Transport V: max    19311.264890534996       min   -21437.216289115429     
+ 
+  - vovecrtz: max   0.13446289300918579       min  -0.11104480177164078     
+  - Vertical Transport: max    29457.590693661998       min   -24398.634502249075     
+ ---------------------------------
+ - READ INPUT DATA :          35 -
+  - vozocrtx: max    1.6977089643478394       min   -2.5765459537506104     
+  - Transport U: max    7877.8290951325598       min   -17344.943556899358     
+  - vomecrty: max    2.3145186901092529       min   -2.5556082725524902     
+  - Transport V: max    10831.884050182778       min   -17476.956733092273     
+ 
+  - vovecrtz: max   9.05571728944778442E-002  min  -0.11440822482109070     
+  - Vertical Transport: max    19838.901824895845       min   -25190.345009998615     
+ ---------------------------------
+ - READ INPUT DATA :          36 -
+  - vozocrtx: max    1.2812852859497070       min   -2.3588805198669434     
+  - Transport U: max    8252.8166292303977       min   -13302.139971179331     
+  - vomecrty: max    1.6206048727035522       min   -2.0951650142669678     
+  - Transport V: max    8335.6830669763749       min   -15067.970590421830     
+ 
+  - vovecrtz: max   6.16634190082550049E-002  min  -0.10133065283298492     
+  - Vertical Transport: max    13569.808460558494       min   -22310.931831543730     
+ ---------------------------------
+ - READ INPUT DATA :          37 -
+  - vozocrtx: max    2.1795418262481689       min   -2.1470608711242676     
+  - Transport U: max    12659.077441599191       min   -10679.902161312215     
+  - vomecrty: max    1.5299491882324219       min   -3.5302140712738037     
+  - Transport V: max    10995.544368021221       min   -16370.553418347374     
+ 
+  - vovecrtz: max   9.15083810687065125E-002  min  -6.75468221306800842E-002
+  - Vertical Transport: max    19261.307649337570       min   -14172.199845881010     
+ ---------------------------------
+ - READ INPUT DATA :          38 -
+  - vozocrtx: max    3.0115375518798828       min   -2.2448472976684570     
+  - Transport U: max    17471.920021211459       min   -12615.218823098374     
+  - vomecrty: max    1.7904226779937744       min   -4.9247379302978516     
+  - Transport V: max    16761.516750325081       min   -23031.973081738033     
+ 
+  - vovecrtz: max   0.12350962311029434       min  -0.10369922965764999     
+  - Vertical Transport: max    25997.147153056281       min   -21746.837248921409     
+ ---------------------------------
+ - READ INPUT DATA :          39 -
+  - vozocrtx: max    3.1337344646453857       min   -2.3343532085418701     
+  - Transport U: max    17956.066398888855       min   -12491.501596586908     
+  - vomecrty: max    2.2941815853118896       min   -5.0982637405395508     
+  - Transport V: max    19589.253755117152       min   -23901.132647407539     
+ 
+  - vovecrtz: max   0.12452267110347748       min  -0.11894248425960541     
+  - Vertical Transport: max    26210.380398277761       min   -26056.183881961791     
+ ---------------------------------
+ - READ INPUT DATA :          40 -
+  - vozocrtx: max    2.7079370021820068       min   -2.0226979255676270     
+  - Transport U: max    15606.642993307602       min   -14217.081017771974     
+  - vomecrty: max    2.1520109176635742       min   -4.3841233253479004     
+  - Transport V: max    21581.640228631059       min   -20587.899575316074     
+ 
+  - vovecrtz: max   0.15331989526748657       min  -0.18385413289070129     
+  - Vertical Transport: max    33712.609181393818       min   -40428.949557493732     
+ ---------------------------------
+ - READ INPUT DATA :          41 -
+  - vozocrtx: max    1.8692034482955933       min   -1.4141343832015991     
+  - Transport U: max    15427.641252792038       min   -13579.266810856738     
+  - vomecrty: max    1.7015335559844971       min   -2.9894878864288330     
+  - Transport V: max    21212.734042663815       min   -14052.155433356878     
+ 
+  - vovecrtz: max   0.13969035446643829       min  -0.14886900782585144     
+  - Vertical Transport: max    30715.689691291336       min   -32735.829831160070     
+ ---------------------------------
+ - READ INPUT DATA :          42 -
+  - vozocrtx: max    1.4689338207244873       min   -1.6045550107955933     
+  - Transport U: max    13120.451290665836       min   -12957.583455132355     
+  - vomecrty: max    1.4948284626007080       min   -1.2830661535263062     
+  - Transport V: max    17162.399950105246       min   -9156.0421213757654     
+ 
+  - vovecrtz: max   9.95471552014350891E-002  min  -0.11041350662708282     
+  - Vertical Transport: max    21888.837926549364       min   -24271.194892702992     
+ ---------------------------------
+ - READ INPUT DATA :          43 -
+  - vozocrtx: max    1.4227120876312256       min   -2.0390450954437256     
+  - Transport U: max    9210.5156144290577       min   -12068.695372797967     
+  - vomecrty: max    1.8657560348510742       min   -1.3907473087310791     
+  - Transport V: max    15151.946064421154       min   -9098.1316736330664     
+ 
+  - vovecrtz: max   6.22932016849517822E-002  min  -6.28509297966957092E-002
+  - Vertical Transport: max    13488.275361938649       min   -13815.947096358412     
+ ---------------------------------
+ - READ INPUT DATA :          44 -
+  - vozocrtx: max    2.0025236606597900       min   -2.3279280662536621     
+  - Transport U: max    11070.006948372367       min   -12768.193656759340     
+  - vomecrty: max    3.7363939285278320       min   -1.8209834098815918     
+  - Transport V: max    17553.263434236171       min   -9697.4736337386294     
+ 
+  - vovecrtz: max   0.10612709075212479       min  -9.30487066507339478E-002
+  - Vertical Transport: max    22359.924216093477       min   -19507.449211276180     
+ ---------------------------------
+ - READ INPUT DATA :          45 -
+  - vozocrtx: max    2.1984119415283203       min   -2.5461125373840332     
+  - Transport U: max    13012.331121587524       min   -14234.796354661543     
+  - vomecrty: max    4.2614264488220215       min   -2.0511026382446289     
+  - Transport V: max    20001.869391681808       min   -11375.807917082157     
+ 
+  - vovecrtz: max   0.12229039520025253       min  -7.92227387428283691E-002
+  - Vertical Transport: max    25765.371967279920       min   -16608.866560658807     
+ ---------------------------------
+ - READ INPUT DATA :          46 -
+  - vozocrtx: max    1.9331115484237671       min   -2.2743182182312012     
+  - Transport U: max    11382.778968532255       min   -12411.501342067257     
+  - vomecrty: max    3.7189497947692871       min   -2.1028513908386230     
+  - Transport V: max    17398.365830514631       min   -12253.211982274235     
+ 
+  - vovecrtz: max   0.10655233263969421       min  -5.92870675027370453E-002
+  - Vertical Transport: max    22449.518459299194       min   -12429.398535718634     
+ ---------------------------------
+ - READ INPUT DATA :          47 -
+  - vozocrtx: max    1.3784719705581665       min   -1.7156714200973511     
+  - Transport U: max    6825.8937496872086       min   -9595.4773784842218     
+  - vomecrty: max    2.2320210933685303       min   -1.9569472074508667     
+  - Transport V: max    10295.769077361085       min   -11222.509795488024     
+ 
+  - vovecrtz: max   6.64711520075798035E-002  min  -5.52817434072494507E-002
+  - Vertical Transport: max    14004.811692401518       min   -12152.081835218496     
+ ---------------------------------
+ - READ INPUT DATA :          48 -
+  - vozocrtx: max    1.2020317316055298       min   -1.4739193916320801     
+ -> Netcdf File - Successful Closing - ncid =      327680
+ 
+  - Transport U: max    7367.4395672914079       min   -7178.1792762227306     
+  - vomecrty: max    1.0958579778671265       min   -1.5924957990646362     
+ -> Netcdf File - Successful Closing - ncid =      393216
+ 
+  - Transport V: max    8552.0344202802462       min   -7738.0012137095428     
+ 
+  - vovecrtz: max   3.72556224465370178E-002  min  -4.84485737979412079E-002
+ -> Netcdf File - Successful Closing - ncid =      458752
+ 
+  - Vertical Transport: max    7904.7432159143400       min   -10332.470675841276     
+ ---------------------------------
+ - READ INPUT DATA :          49 -
+ 
+ -> Netcdf File - Successful Opening -/ocean/gsgarbi/analysis-giorgio/time_series/arianefiles/2016/07/25/5 day(s)/SalishSea_03_grid_U.nc - ncid =       524288
+ TRIM(nc_var_name) = vozocrtx
+  - vozocrtx: max    1.9287213087081909       min   -1.4720638990402222     
+  - Transport U: max    11299.167974363152       min   -9687.5767267570463     
+ 
+ -> Netcdf File - Successful Opening -/ocean/gsgarbi/analysis-giorgio/time_series/arianefiles/2016/07/25/5 day(s)/SalishSea_03_grid_V.nc - ncid =       589824
+ TRIM(nc_var_name) = vomecrty
+  - vomecrty: max    1.1946444511413574       min   -3.2008960247039795     
+  - Transport V: max    11583.568916365975       min   -14865.752191851492     
+ 
+ 
+ -> Netcdf File - Successful Opening -/ocean/gsgarbi/analysis-giorgio/time_series/arianefiles/2016/07/25/5 day(s)/SalishSea_03_grid_W.nc - ncid =       655360
+ TRIM(nc_var_name) = vovecrtz
+  - vovecrtz: max   8.35603103041648865E-002  min  -6.32368028163909912E-002
+  - Vertical Transport: max    17588.343551113623       min   -13703.000114593875     
+ ---------------------------------
+ - READ INPUT DATA :          50 -
+  - vozocrtx: max    2.9099144935607910       min   -2.1477267742156982     
+  - Transport U: max    16941.981038682225       min   -12267.371373588428     
+  - vomecrty: max    1.9547196626663208       min   -4.7439045906066895     
+  - Transport V: max    15883.258180960998       min   -22288.006599697586     
+ 
+  - vovecrtz: max   0.11975486576557159       min  -0.10330417007207870     
+  - Vertical Transport: max    25206.820239601064       min   -22630.370198898570     
+ ---------------------------------
+ - READ INPUT DATA :          51 -
+  - vozocrtx: max    3.1219880580902100       min   -2.3044285774230957     
+  - Transport U: max    17915.886468057568       min   -13912.401281050626     
+  - vomecrty: max    2.4643642902374268       min   -5.0745043754577637     
+  - Transport V: max    20572.383483202466       min   -23910.123619889902     
+ 
+  - vovecrtz: max   0.12884600460529327       min  -0.13179408013820648     
+  - Vertical Transport: max    28331.189440640486       min   -28871.523980783120     
+ ---------------------------------
+ - READ INPUT DATA :          52 -
+  - vozocrtx: max    2.7888629436492920       min   -2.0564215183258057     
+  - Transport U: max    17915.598107841910       min   -16547.636135159944     
+  - vomecrty: max    2.3795552253723145       min   -4.5112905502319336     
+  - Transport V: max    23650.653992312651       min   -21300.000519210091     
+ 
+  - vovecrtz: max   0.14255027472972870       min  -0.15766768157482147     
+  - Vertical Transport: max    31309.113612101002       min   -34539.535044429518     
+ ---------------------------------
+ - READ INPUT DATA :          53 -
+  - vozocrtx: max    2.1047103404998779       min   -1.7209724187850952     
+  - Transport U: max    16643.625385162442       min   -17003.679564254286     
+  - vomecrty: max    1.9175494909286499       min   -3.2577319145202637     
+  - Transport V: max    23175.624199495578       min   -15404.212491665681     
+ 
+  - vovecrtz: max   0.13731896877288818       min  -0.16610571742057800     
+  - Vertical Transport: max    30194.259651402983       min   -36513.506032587233     
+ ---------------------------------
+ - READ INPUT DATA :          54 -
+  - vozocrtx: max    1.5607424974441528       min   -1.4054244756698608     
+  - Transport U: max    14391.255542484998       min   -16566.727233695638     
+  - vomecrty: max    1.7518661022186279       min   -1.3287456035614014     
+  - Transport V: max    18432.232403244085       min   -10522.176329297139     
+ 
+  - vovecrtz: max   0.11335352063179016       min  -0.10661236941814423     
+  - Vertical Transport: max    24896.467316679351       min   -23415.225802191777     
+ ---------------------------------
+ - READ INPUT DATA :          55 -
+  - vozocrtx: max    1.4059520959854126       min   -2.0792362689971924     
+  - Transport U: max    10046.838703135516       min   -15779.592500701454     
+  - vomecrty: max    1.8400971889495850       min   -1.5272390842437744     
+  - Transport V: max    16181.226218705711       min   -9936.8410100787369     
+ 
+  - vovecrtz: max   7.53819122910499573E-002  min  -8.49344208836555481E-002
+  - Vertical Transport: max    16681.443406803224       min   -18807.839763193206     
+ ---------------------------------
+ - READ INPUT DATA :          56 -
+  - vozocrtx: max    2.2236802577972412       min   -2.5611264705657959     
+  - Transport U: max    12391.876421392764       min   -14283.393658265037     
+  - vomecrty: max    4.1587171554565430       min   -2.4106674194335938     
+  - Transport V: max    19778.181275539344       min   -13564.980639233525     
+ 
+  - vovecrtz: max   0.11925745010375977       min  -0.11466677486896515     
+  - Vertical Transport: max    25126.360551546819       min   -24039.627927053334     
+ ---------------------------------
+ - READ INPUT DATA :          57 -
+  - vozocrtx: max    2.6186542510986328       min   -2.9989423751831055     
+  - Transport U: max    15583.438229513938       min   -16936.728781557336     
+  - vomecrty: max    5.0548510551452637       min   -2.8737452030181885     
+  - Transport V: max    23997.601251587890       min   -17990.769202587795     
+ 
+  - vovecrtz: max   0.14393529295921326       min  -8.95429179072380066E-002
+  - Vertical Transport: max    30325.736998729382       min   -18772.468593910751     
+ ---------------------------------
+ - READ INPUT DATA :          58 -
+  - vozocrtx: max    2.5765266418457031       min   -2.9719369411468506     
+  - Transport U: max    15278.518521351216       min   -17029.534740202638     
+  - vomecrty: max    4.9110226631164551       min   -3.1447315216064453     
+  - Transport V: max    23220.815729575461       min   -21201.418651996526     
+ 
+  - vovecrtz: max   0.13907438516616821       min  -9.46924984455108643E-002
+  - Vertical Transport: max    29301.591993871330       min   -20789.679956511052     
+ ---------------------------------
+ - READ INPUT DATA :          59 -
+  - vozocrtx: max    2.0806353092193604       min   -2.8577015399932861     
+  - Transport U: max    12288.409555059192       min   -19345.159910126356     
+  - vomecrty: max    3.9430038928985596       min   -3.0398137569427490     
+  - Transport V: max    18589.716127359494       min   -20067.605762021969     
+ 
+  - vovecrtz: max   0.12667857110500336       min  -0.11180686950683594     
+  - Vertical Transport: max    27856.222107686928       min   -24565.407584344266     
+ ---------------------------------
+ - READ INPUT DATA :          60 -
+  - vozocrtx: max    1.7329536676406860       min   -2.6468765735626221     
+  - Transport U: max    8580.5614433283190       min   -18268.805551915357     
+  - vomecrty: max    2.2030901908874512       min   -2.6204891204833984     
+  - Transport V: max    10327.726120715330       min   -20374.544240539002     
+ 
+  - vovecrtz: max   0.10576391220092773       min  -0.16634882986545563     
+  - Vertical Transport: max    23170.333212765960       min   -36548.977937118718     
+ ---------------------------------
+ - READ INPUT DATA :          61 -
+  - vozocrtx: max    1.5208863019943237       min   -2.5297231674194336     
+  - Transport U: max    9572.8929443407378       min   -13870.036134143202     
+  - vomecrty: max    1.6396131515502930       min   -2.1148314476013184     
+  - Transport V: max    8578.2013741718474       min   -17325.768512425151     
+ 
+  - vovecrtz: max   6.79501295089721680E-002  min  -8.23008120059967041E-002
+  - Vertical Transport: max    14953.152387800392       min   -18116.873496934390     
+ ---------------------------------
+ - READ INPUT DATA :          62 -
+  - vozocrtx: max    2.1578783988952637       min   -2.2796852588653564     
+  - Transport U: max    12579.000998677295       min   -11587.388451870769     
+  - vomecrty: max    1.6783868074417114       min   -3.5003356933593750     
+  - Transport V: max    12145.697983606493       min   -16189.283811848132     
+ 
+  - vovecrtz: max   9.11640152335166931E-002  min  -6.50612711906433105E-002
+  - Vertical Transport: max    19188.823181597592       min   -14402.684123029474     
+ ---------------------------------
+ - READ INPUT DATA :          63 -
+  - vozocrtx: max    2.9827721118927002       min   -2.2309100627899170     
+  - Transport U: max    17304.603030437174       min   -12509.897636820042     
+  - vomecrty: max    1.8607295751571655       min   -4.8832454681396484     
+  - Transport V: max    16919.173562908894       min   -22785.086247223408     
+ 
+  - vovecrtz: max   0.12221890687942505       min  -9.83180701732635498E-002
+  - Vertical Transport: max    25725.468404941388       min   -20618.350567739890     
+ ---------------------------------
+ - READ INPUT DATA :          64 -
+  - vozocrtx: max    3.1583485603332520       min   -2.3622486591339111     
+  - Transport U: max    18101.001500442842       min   -12535.970773840883     
+  - vomecrty: max    2.4013795852661133       min   -5.1484131813049316     
+  - Transport V: max    22298.367982421390       min   -24088.640771815160     
+ 
+  - vovecrtz: max   0.13619945943355560       min  -0.10882834345102310     
+  - Vertical Transport: max    29924.773392819949       min   -23989.393445218182     
+ ---------------------------------
+ - READ INPUT DATA :          65 -
+  - vozocrtx: max    2.8149330615997314       min   -2.1061544418334961     
+  - Transport U: max    17166.805939754508       min   -14281.996573687149     
+  - vomecrty: max    2.3744280338287354       min   -4.5657181739807129     
+  - Transport V: max    23683.707803974536       min   -21406.660029581715     
+ 
+  - vovecrtz: max   0.16446098685264587       min  -0.12999330461025238     
+  - Vertical Transport: max    36162.358222829804       min   -28575.243440081482     
+ ---------------------------------
+ - READ INPUT DATA :          66 -
+  - vozocrtx: max    2.7857208251953125       min   -1.5816481113433838     
+  - Transport U: max    17530.838339588267       min   -15385.954171413545     
+  - vomecrty: max    2.2407710552215576       min   -3.3766424655914307     
+  - Transport V: max    22302.070670558602       min   -15868.384004615535     
+ 
+  - vovecrtz: max   0.14456748962402344       min  -0.15362122654914856     
+  - Vertical Transport: max    31788.094229565053       min   -33785.670596593802     
+ ---------------------------------
+ - READ INPUT DATA :          67 -
+  - vozocrtx: max    1.8685390949249268       min   -1.2387726306915283     
+  - Transport U: max    15265.104228350196       min   -14473.417999734005     
+  - vomecrty: max    1.6919662952423096       min   -1.6101216077804565     
+  - Transport V: max    21565.791054224916       min   -10397.637831214273     
+ 
+  - vovecrtz: max   0.13574737310409546       min  -0.12509058415889740     
+  - Vertical Transport: max    29814.954303795734       min   -27497.523084897235     
+ ---------------------------------
+ - READ INPUT DATA :          68 -
+  - vozocrtx: max    1.3306349515914917       min   -1.5334669351577759     
+  - Transport U: max    11726.915696801927       min   -14144.417287338390     
+  - vomecrty: max    1.3543932437896729       min   -1.3160591125488281     
+  - Transport V: max    18164.013746354980       min   -9267.4531219076234     
+ 
+  - vovecrtz: max   9.65395867824554443E-002  min  -0.10505488514900208     
+  - Vertical Transport: max    21203.529045229043       min   -23093.257969732189     
+ ---------------------------------
+ - READ INPUT DATA :          69 -
+  - vozocrtx: max    1.8297016620635986       min   -2.0018317699432373     
+  - Transport U: max    9507.1555390372723       min   -12380.366619831051     
+  - vomecrty: max    3.0148427486419678       min   -1.6196759939193726     
+  - Transport V: max    16871.634376194936       min   -8349.0053513520452     
+ 
+  - vovecrtz: max   9.21829715371131897E-002  min  -6.96049854159355164E-002
+  - Vertical Transport: max    19422.036757781239       min   -15300.629589093549     
+ ---------------------------------
+ - READ INPUT DATA :          70 -
+  - vozocrtx: max    1.9843232631683350       min   -2.3799493312835693     
+  - Transport U: max    11769.701519320888       min   -13068.099013023433     
+  - vomecrty: max    3.8755609989166260       min   -2.0873153209686279     
+  - Transport V: max    18240.616930152701       min   -8866.9186533802167     
+ 
+  - vovecrtz: max   0.11046343296766281       min  -5.93946687877178192E-002
+  - Vertical Transport: max    23273.548462525916       min   -12451.956899798957     
+ ---------------------------------
+ - READ INPUT DATA :          71 -
+  - vozocrtx: max    1.8767826557159424       min   -2.2230832576751709     
+  - Transport U: max    11097.232829224620       min   -12157.776857947138     
+  - vomecrty: max    3.6453349590301514       min   -2.2636113166809082     
+  - Transport V: max    17103.955555111788       min   -9719.7873671521756     
+ 
+  - vovecrtz: max   0.10537195950746536       min  -5.22743053734302521E-002
+  - Vertical Transport: max    22200.825561036349       min   -10955.051977079736     
+ ---------------------------------
+ - READ INPUT DATA :          72 -
+  - vozocrtx: max    1.3638623952865601       min   -1.8609613180160522     
+ -> Netcdf File - Successful Closing - ncid =      524288
+ 
+  - Transport U: max    7901.5551046285473       min   -8373.6657424019504     
+  - vomecrty: max    2.4973247051239014       min   -2.1727449893951416     
+ -> Netcdf File - Successful Closing - ncid =      589824
+ 
+  - Transport V: max    11644.932023829480       min   -10036.499338075095     
+ 
+  - vovecrtz: max   7.37064778804779053E-002  min  -4.39946949481964111E-002
+ -> Netcdf File - Successful Closing - ncid =      655360
+ 
+  - Vertical Transport: max    15529.223009532652       min   -9684.9525671381998     
+ ---------------------------------
+ - READ INPUT DATA :          73 -
+ 
+ -> Netcdf File - Successful Opening -/ocean/gsgarbi/analysis-giorgio/time_series/arianefiles/2016/07/25/5 day(s)/SalishSea_04_grid_U.nc - ncid =       720896
+ TRIM(nc_var_name) = vozocrtx
+  - vozocrtx: max    1.3439841270446777       min   -1.9172036647796631     
+  - Transport U: max    8595.4761690262803       min   -7624.1986841626222     
+ 
+ -> Netcdf File - Successful Opening -/ocean/gsgarbi/analysis-giorgio/time_series/arianefiles/2016/07/25/5 day(s)/SalishSea_04_grid_V.nc - ncid =       786432
+ TRIM(nc_var_name) = vomecrty
+  - vomecrty: max    1.1316926479339600       min   -1.7631227970123291     
+  - Transport V: max    9861.6460086637799       min   -8193.6332029525456     
+ 
+ 
+ -> Netcdf File - Successful Opening -/ocean/gsgarbi/analysis-giorgio/time_series/arianefiles/2016/07/25/5 day(s)/SalishSea_04_grid_W.nc - ncid =       851968
+ TRIM(nc_var_name) = vovecrtz
+  - vovecrtz: max   3.46176214516162872E-002  min  -4.98370155692100525E-002
+  - Vertical Transport: max    7274.4954901628662       min   -11032.474154625213     
+ ---------------------------------
+ - READ INPUT DATA :          74 -
+  - vozocrtx: max    1.4398653507232666       min   -1.7771668434143066     
+  - Transport U: max    12248.157993534694       min   -10016.983191326379     
+  - vomecrty: max    1.2249232530593872       min   -2.2442433834075928     
+  - Transport V: max    11804.544805234571       min   -10563.826821258914     
+ 
+  - vovecrtz: max   6.11630305647850037E-002  min  -7.17632323503494263E-002
+  - Vertical Transport: max    12874.011480867885       min   -15720.841797817491     
+ ---------------------------------
+ - READ INPUT DATA :          75 -
+  - vozocrtx: max    2.4865694046020508       min   -1.8458089828491211     
+  - Transport U: max    14585.169086740005       min   -12034.235419889141     
+  - vomecrty: max    1.5531566143035889       min   -4.0042753219604492     
+  - Transport V: max    13485.697248532546       min   -18843.906823770503     
+ 
+  - vovecrtz: max   0.10431487858295441       min  -9.23785567283630371E-002
+  - Vertical Transport: max    21956.906518551532       min   -20236.946250515881     
+ ---------------------------------
+ - READ INPUT DATA :          76 -
+  - vozocrtx: max    2.8039019107818604       min   -2.0659666061401367     
+  - Transport U: max    16345.141279941943       min   -12344.127819585428     
+  - vomecrty: max    1.8858664035797119       min   -4.5621600151062012     
+  - Transport V: max    17935.494978659728       min   -21536.144819240733     
+ 
+  - vovecrtz: max   0.11455842852592468       min  -0.12551057338714600     
+  - Vertical Transport: max    24113.038717248877       min   -26320.909243781600     
+ ---------------------------------
+ - READ INPUT DATA :          77 -
+  - vozocrtx: max    2.5832571983337402       min   -1.9028184413909912     
+  - Transport U: max    16115.974986752879       min   -13847.318361514437     
+  - vomecrty: max    1.9325101375579834       min   -4.1768074035644531     
+  - Transport V: max    18646.463263300131       min   -19740.081010744278     
+ 
+  - vovecrtz: max   0.12857031822204590       min  -0.13440369069576263     
+  - Vertical Transport: max    28270.570384784518       min   -29443.199383153074     
+ ---------------------------------
+ - READ INPUT DATA :          78 -
+  - vozocrtx: max    1.8736400604248047       min   -1.5772633552551270     
+  - Transport U: max    16924.117673078577       min   -15868.683825466767     
+  - vomecrty: max    1.6434859037399292       min   -3.0071187019348145     
+  - Transport V: max    19847.242851032428       min   -14222.654070924054     
+ 
+  - vovecrtz: max   0.12125016003847122       min  -0.11782705783843994     
+  - Vertical Transport: max    26660.983895318866       min   -25815.730018524457     
+ ---------------------------------
+ - READ INPUT DATA :          79 -
+  - vozocrtx: max    1.1312412023544312       min   -1.3381109237670898     
+  - Transport U: max    12152.462047337971       min   -15380.292605389674     
+  - vomecrty: max    1.3617870807647705       min   -1.2092804908752441     
+  - Transport V: max    18257.736530727198       min   -9770.7473173444978     
+ 
+  - vovecrtz: max   6.77178576588630676E-002  min  -8.76572355628013611E-002
+  - Vertical Transport: max    14873.251581094746       min   -19418.696467150501     
+ ---------------------------------
+ - READ INPUT DATA :          80 -
+  - vozocrtx: max    1.3772163391113281       min   -2.2075552940368652     
+  - Transport U: max    9610.4757996781045       min   -11407.244735520044     
+  - vomecrty: max    1.8099414110183716       min   -1.6875233650207520     
+  - Transport V: max    15619.966854695633       min   -9545.6360294730712     
+ 
+  - vovecrtz: max   6.02007247507572174E-002  min  -5.66979609429836273E-002
+  - Vertical Transport: max    12683.694932567292       min   -12556.860346028843     
+ ---------------------------------
+ - READ INPUT DATA :          81 -
+  - vozocrtx: max    2.1578030586242676       min   -2.5140728950500488     
+  - Transport U: max    11996.189851612096       min   -13819.537113554510     
+  - vomecrty: max    4.0276279449462891       min   -2.5294530391693115     
+  - Transport V: max    19165.045480366956       min   -13178.262927682350     
+ 
+  - vovecrtz: max   0.11502722650766373       min  -7.13320001959800720E-002
+  - Vertical Transport: max    24235.094444509545       min   -14954.591214093438     
+ ---------------------------------
+ - READ INPUT DATA :          82 -
+  - vozocrtx: max    2.5591189861297607       min   -2.9400310516357422     
+  - Transport U: max    15224.802350735115       min   -16971.254304247544     
+  - vomecrty: max    4.9436907768249512       min   -3.3510942459106445     
+  - Transport V: max    23431.803125576280       min   -17998.043849039332     
+ 
+  - vovecrtz: max   0.13982754945755005       min  -7.97219127416610718E-002
+  - Vertical Transport: max    29460.276231404041       min   -16740.403243342680     
+ ---------------------------------
+ - READ INPUT DATA :          83 -
+  - vozocrtx: max    2.5531408786773682       min   -3.0051982402801514     
+  - Transport U: max    15133.051697472209       min   -18253.424699368239     
+  - vomecrty: max    4.8643040657043457       min   -3.5538444519042969     
+  - Transport V: max    22941.496563582714       min   -20348.632908939449     
+ 
+  - vovecrtz: max   0.13702885806560516       min  -0.10217265784740448     
+  - Vertical Transport: max    28870.619745160751       min   -22388.392535135456     
+ ---------------------------------
+ - READ INPUT DATA :          84 -
+  - vozocrtx: max    2.1096739768981934       min   -2.8367316722869873     
+  - Transport U: max    12452.485686673597       min   -20386.915210572242     
+  - vomecrty: max    3.9904394149780273       min   -3.3045771121978760     
+  - Transport V: max    18753.957290719569       min   -20464.796980866729     
+ 
+  - vovecrtz: max   0.13959668576717377       min  -0.11525054275989532     
+  - Vertical Transport: max    30582.281397442737       min   -25322.026899613946     
+ ---------------------------------
+ - READ INPUT DATA :          85 -
+  - vozocrtx: max    1.8462215662002563       min   -2.9384453296661377     
+  - Transport U: max    7647.3020183734916       min   -20381.056553853083     
+  - vomecrty: max    2.3419077396392822       min   -2.9287590980529785     
+  - Transport V: max    10953.188249129666       min   -21505.441013718755     
+ 
+  - vovecrtz: max   0.12862084805965424       min  -0.10097366571426392     
+  - Vertical Transport: max    28177.738943592038       min   -22185.213345988232     
+ ---------------------------------
+ - READ INPUT DATA :          86 -
+  - vozocrtx: max    1.3539791107177734       min   -2.7620394229888916     
+  - Transport U: max    8770.6539215506782       min   -14406.514277837035     
+  - vomecrty: max    1.9286164045333862       min   -2.2596528530120850     
+  - Transport V: max    11387.974233592742       min   -17241.707902410450     
+ 
+  - vovecrtz: max   9.58517789840698242E-002  min  -8.04797783493995667E-002
+  - Vertical Transport: max    21021.966870145636       min   -17663.806411510515     
+ ---------------------------------
+ - READ INPUT DATA :          87 -
+  - vozocrtx: max    2.0259072780609131       min   -2.6006999015808105     
+  - Transport U: max    11985.060166772466       min   -11450.056813639532     
+  - vomecrty: max    1.6514043807983398       min   -3.3469455242156982     
+  - Transport V: max    12415.360513086232       min   -15429.257553533060     
+ 
+  - vovecrtz: max   8.67912173271179199E-002  min  -6.50963187217712402E-002
+  - Vertical Transport: max    18268.406878960926       min   -13650.408622932429     
+ ---------------------------------
+ - READ INPUT DATA :          88 -
+  - vozocrtx: max    2.9869277477264404       min   -2.2379145622253418     
+  - Transport U: max    17363.100330860918       min   -12573.149028511127     
+  - vomecrty: max    2.0026509761810303       min   -4.8915734291076660     
+  - Transport V: max    18093.170246296399       min   -22780.783167414222     
+ 
+  - vovecrtz: max   0.12179072201251984       min  -8.11836719512939453E-002
+  - Vertical Transport: max    25635.341136204552       min   -17830.518681075762     
+ ---------------------------------
+ - READ INPUT DATA :          89 -
+  - vozocrtx: max    3.2588636875152588       min   -2.4441115856170654     
+  - Transport U: max    18669.123376549698       min   -12961.996300172956     
+  - vomecrty: max    2.7163107395172119       min   -5.3230776786804199     
+  - Transport V: max    24092.014636270527       min   -24867.365523186530     
+ 
+  - vovecrtz: max   0.12889847159385681       min  -0.11005815118551254     
+  - Vertical Transport: max    27131.428705252361       min   -24193.080344564736     
+ ---------------------------------
+ - READ INPUT DATA :          90 -
+  - vozocrtx: max    3.0216660499572754       min   -2.2624650001525879     
+  - Transport U: max    18563.281699370087       min   -16152.950929056997     
+  - vomecrty: max    2.7447900772094727       min   -4.9113883972167969     
+  - Transport V: max    26653.890625457167       min   -22999.220388811558     
+ 
+  - vovecrtz: max   0.19874034821987152       min  -0.18554267287254333     
+  - Vertical Transport: max    43699.845192442401       min   -40800.254225375669     
+ ---------------------------------
+ - READ INPUT DATA :          91 -
+  - vozocrtx: max    2.6617360115051270       min   -1.8120961189270020     
+  - Transport U: max    18492.112580716741       min   -17633.892380887650     
+  - vomecrty: max    2.5926895141601563       min   -3.9000706672668457     
+  - Transport V: max    27266.534453204731       min   -18323.236062489039     
+ 
+  - vovecrtz: max   0.17326402664184570       min  -0.16680970788002014     
+  - Vertical Transport: max    38098.006818883128       min   -36686.192197178716     
+ ---------------------------------
+ - READ INPUT DATA :          92 -
+  - vozocrtx: max    2.1240284442901611       min   -1.5785982608795166     
+  - Transport U: max    17837.319526149317       min   -17389.554142665580     
+  - vomecrty: max    2.4045968055725098       min   -2.3644554615020752     
+  - Transport V: max    24653.560114113396       min   -13160.821995873319     
+ 
+  - vovecrtz: max   0.16195945441722870       min  -0.16270138323307037     
+  - Vertical Transport: max    35572.060232903888       min   -35782.654929942379     
+ ---------------------------------
+ - READ INPUT DATA :          93 -
+  - vozocrtx: max    1.6032512187957764       min   -1.3137117624282837     
+  - Transport U: max    14359.109450587963       min   -15485.644948280635     
+  - vomecrty: max    1.8260915279388428       min   -1.4044051170349121     
+  - Transport V: max    20878.583796460891       min   -12005.948307221024     
+ 
+  - vovecrtz: max   0.11684153974056244       min  -0.10511291027069092     
+  - Vertical Transport: max    25662.560449539204       min   -23285.649909219450     
+ ---------------------------------
+ - READ INPUT DATA :          94 -
+  - vozocrtx: max    1.6376237869262695       min   -1.7015093564987183     
+  - Transport U: max    11266.669589086352       min   -15419.324950747099     
+  - vomecrty: max    2.3004918098449707       min   -2.0221309661865234     
+  - Transport V: max    18319.984971310532       min   -10470.604375800662     
+ 
+  - vovecrtz: max   7.55186229944229126E-002  min  -8.77920389175415039E-002
+  - Vertical Transport: max    15911.023991065382       min   -19448.559437521923     
+ ---------------------------------
+ - READ INPUT DATA :          95 -
+  - vozocrtx: max    1.8719712495803833       min   -2.2485179901123047     
+  - Transport U: max    10706.673280181511       min   -13711.081951305790     
+  - vomecrty: max    3.5977399349212646       min   -2.1490044593811035     
+  - Transport V: max    16905.278379499006       min   -8537.4896700863428     
+ 
+  - vovecrtz: max   0.10171160101890564       min  -7.95839130878448486E-002
+  - Vertical Transport: max    21429.624373593157       min   -17616.053356072072     
+ ---------------------------------
+ - READ INPUT DATA :          96 -
+  - vozocrtx: max    1.9452263116836548       min   -2.2846987247467041     
+ -> Netcdf File - Successful Closing - ncid =      720896
+ 
+  - Transport U: max    11404.473171633950       min   -12639.234034105350     
+  - vomecrty: max    3.7683086395263672       min   -2.1440958976745605     
+ -> Netcdf File - Successful Closing - ncid =      786432
+ 
+  - Transport V: max    17723.136513945625       min   -8945.9009626546904     
+ 
+  - vovecrtz: max   0.11032050848007202       min  -7.69706815481185913E-002
+ -> Netcdf File - Successful Closing - ncid =      851968
+ 
+  - Vertical Transport: max    23243.435692181363       min   -17037.609491609481     
+ ---------------------------------
+ - READ INPUT DATA :          97 -
+ 
+ -> Netcdf File - Successful Opening -/ocean/gsgarbi/analysis-giorgio/time_series/arianefiles/2016/07/25/5 day(s)/SalishSea_05_grid_U.nc - ncid =       917504
+ TRIM(nc_var_name) = vozocrtx
+  - vozocrtx: max    1.5310057401657104       min   -1.8623543977737427     
+  - Transport U: max    8952.3425978226915       min   -9808.4697687276639     
+ 
+ -> Netcdf File - Successful Opening -/ocean/gsgarbi/analysis-giorgio/time_series/arianefiles/2016/07/25/5 day(s)/SalishSea_05_grid_V.nc - ncid =       983040
+ TRIM(nc_var_name) = vomecrty
+  - vomecrty: max    2.9378676414489746       min   -2.1672754287719727     
+  - Transport V: max    13816.554231284535       min   -9303.7970103254502     
+ 
+ 
+ -> Netcdf File - Successful Opening -/ocean/gsgarbi/analysis-giorgio/time_series/arianefiles/2016/07/25/5 day(s)/SalishSea_05_grid_W.nc - ncid =      1048576
+ TRIM(nc_var_name) = vovecrtz
+  - vovecrtz: max   8.58111009001731873E-002  min  -5.10929562151432037E-002
+  - Vertical Transport: max    18079.546885054020       min   -11192.042166555879     
+ ---------------------------------
+ - READ INPUT DATA :          98 -
+  - vozocrtx: max    1.2441819906234741       min   -1.8406678438186646     
+  - Transport U: max    9573.1986919200335       min   -7788.8322483300508     
+  - vomecrty: max    1.5488067865371704       min   -1.8948980569839478     
+  - Transport V: max    9685.2017125464063       min   -8247.0066878774742     
+ 
+  - vovecrtz: max   3.93660925328731537E-002  min  -5.46544268727302551E-002
+  - Vertical Transport: max    8294.0448049655406       min   -12104.280191368116     
+ ---------------------------------
+ - READ INPUT DATA :          99 -
+  - vozocrtx: max    1.1452535390853882       min   -1.9047418832778931     
+  - Transport U: max    11335.492413687425       min   -9216.5383681415515     
+  - vomecrty: max    1.2240151166915894       min   -1.5429904460906982     
+  - Transport V: max    10753.425305089133       min   -9090.8219112154275     
+ 
+  - vovecrtz: max   4.08418737351894379E-002  min  -6.27910271286964417E-002
+  - Vertical Transport: max    8560.0990064939742       min   -13898.915512746118     
+ ---------------------------------
+ - READ INPUT DATA :         100 -
+  - vozocrtx: max    2.0959656238555908       min   -1.5956881046295166     
+  - Transport U: max    14527.424903053841       min   -10434.618185540983     
+  - vomecrty: max    1.2400077581405640       min   -3.3434233665466309     
+  - Transport V: max    13210.258671823432       min   -15723.930373673158     
+ 
+  - vovecrtz: max   8.84221568703651428E-002  min  -7.92281925678253174E-002
+  - Vertical Transport: max    18611.698148384308       min   -17537.313929756143     
+ ---------------------------------
+ - READ INPUT DATA :         101 -
+  - vozocrtx: max    2.6124644279479980       min   -1.9313192367553711     
+  - Transport U: max    16067.774903950678       min   -11494.585878979144     
+  - vomecrty: max    1.3037867546081543       min   -4.2514100074768066     
+  - Transport V: max    15705.218339822668       min   -20076.517400406865     
+ 
+  - vovecrtz: max   0.10876546800136566       min  -9.81185734272003174E-002
+  - Vertical Transport: max    22893.696908762256       min   -20789.584086382358     
+ ---------------------------------
+ - READ INPUT DATA :         102 -
+  - vozocrtx: max    2.5293855667114258       min   -1.8611367940902710     
+  - Transport U: max    15445.436660081534       min   -13269.860965139436     
+  - vomecrty: max    1.5737468004226685       min   -4.0926780700683594     
+  - Transport V: max    17218.951572126738       min   -19359.000641968869     
+ 
+  - vovecrtz: max   0.10255885124206543       min  -0.11285996437072754     
+  - Vertical Transport: max    21587.285917044926       min   -24449.902265546447     
+ ---------------------------------
+ - READ INPUT DATA :         103 -
+  - vozocrtx: max    1.9214179515838623       min   -1.6016955375671387     
+  - Transport U: max    13131.581795037138       min   -14480.259446645599     
+  - vomecrty: max    1.3848360776901245       min   -3.0837843418121338     
+  - Transport V: max    17438.670556835048       min   -14589.532380699282     
+ 
+  - vovecrtz: max   8.14315676689147949E-002  min  -0.11141140758991241     
+  - Vertical Transport: max    17905.508029867007       min   -24406.385496160663     
+ ---------------------------------
+ - READ INPUT DATA :         104 -
+  - vozocrtx: max    1.0881633758544922       min   -1.4936493635177612     
+  - Transport U: max    12193.280964609005       min   -13632.170393077469     
+  - vomecrty: max    1.2402044534683228       min   -1.2877647876739502     
+  - Transport V: max    16632.607143001645       min   -8617.3655951640121     
+ 
+  - vovecrtz: max   6.77171945571899414E-002  min  -7.88786485791206360E-002
+  - Vertical Transport: max    14889.935262374758       min   -17461.451932096643     
+ ---------------------------------
+ - READ INPUT DATA :         105 -
+  - vozocrtx: max    1.2238276004791260       min   -2.2794189453125000     
+  - Transport U: max    8901.6818673865473       min   -10986.452248414986     
+  - vomecrty: max    1.5840517282485962       min   -1.5872334241867065     
+  - Transport V: max    14082.056587476131       min   -9499.1853716031292     
+ 
+  - vovecrtz: max   5.35100176930427551E-002  min  -6.26472532749176025E-002
+  - Vertical Transport: max    11792.709551667793       min   -13868.290360484430     
+ ---------------------------------
+ - READ INPUT DATA :         106 -
+  - vozocrtx: max    2.1150965690612793       min   -2.5982182025909424     
+  - Transport U: max    11456.102163972482       min   -13292.483923578458     
+  - vomecrty: max    3.8754196166992188       min   -2.7376942634582520     
+  - Transport V: max    18413.246255695874       min   -13384.426152148615     
+ 
+  - vovecrtz: max   0.11125745624303818       min  -0.10165128111839294     
+  - Vertical Transport: max    23440.841282270456       min   -21310.959335753072     
+ ---------------------------------
+ - READ INPUT DATA :         107 -
+  - vozocrtx: max    2.5451443195343018       min   -2.9248144626617432     
+  - Transport U: max    15130.802328731941       min   -16422.456466178865     
+  - vomecrty: max    4.9218225479125977       min   -3.4409253597259521     
+  - Transport V: max    23260.876075658060       min   -16054.036167098810     
+ 
+  - vovecrtz: max   0.13823024928569794       min  -8.68754461407661438E-002
+  - Vertical Transport: max    29123.740945834172       min   -18213.239219532850     
+ ---------------------------------
+ - READ INPUT DATA :         108 -
+  - vozocrtx: max    2.6066584587097168       min   -3.0845761299133301     
+  - Transport U: max    15433.990367005035       min   -19473.302898706675     
+  - vomecrty: max    4.9615278244018555       min   -3.4972379207611084     
+  - Transport V: max    23326.373878991515       min   -19321.633813997563     
+ 
+  - vovecrtz: max   0.13866706192493439       min  -0.11116810142993927     
+  - Vertical Transport: max    29215.773031522556       min   -24363.281845772850     
+ ---------------------------------
+ - READ INPUT DATA :         109 -
+  - vozocrtx: max    2.2102022171020508       min   -3.1927566528320313     
+  - Transport U: max    13033.329871644615       min   -22769.748830712699     
+  - vomecrty: max    4.1764812469482422       min   -3.3190155029296875     
+  - Transport V: max    19544.097525179448       min   -21422.969570307134     
+ 
+  - vovecrtz: max   0.15513616800308228       min  -0.12086053192615509     
+  - Vertical Transport: max    33986.608770241066       min   -26554.613689860325     
+ ---------------------------------
+ - READ INPUT DATA :         110 -
+  - vozocrtx: max    1.9339408874511719       min   -3.1116232872009277     
+  - Transport U: max    8368.9463958414399       min   -23818.384315507396     
+  - vomecrty: max    2.6086328029632568       min   -2.9723029136657715     
+  - Transport V: max    12302.761966827529       min   -21462.057374571075     
+ 
+  - vovecrtz: max   0.12950345873832703       min  -0.12372891604900360     
+  - Vertical Transport: max    28371.097747142565       min   -27134.456150041478     
+ ---------------------------------
+ - READ INPUT DATA :         111 -
+  - vozocrtx: max    1.4400734901428223       min   -2.8661034107208252     
+  - Transport U: max    9914.9532292764870       min   -15770.236808801490     
+  - vomecrty: max    2.0279035568237305       min   -2.4378840923309326     
+  - Transport V: max    11508.950373724620       min   -19469.682578733802     
+ 
+  - vovecrtz: max   9.41190123558044434E-002  min  -0.12912392616271973     
+  - Vertical Transport: max    20804.586243040903       min   -28317.612602343073     
+ ---------------------------------
+ - READ INPUT DATA :         112 -
+  - vozocrtx: max    1.9505640268325806       min   -2.8423440456390381     
+  - Transport U: max    13505.046465493377       min   -11850.137157416668     
+  - vomecrty: max    1.8464204072952271       min   -3.2652740478515625     
+  - Transport V: max    13669.695772993413       min   -15012.938373254196     
+ 
+  - vovecrtz: max   8.45123454928398132E-002  min  -8.03605243563652039E-002
+  - Vertical Transport: max    17788.734405458370       min   -17671.028301271072     
+ ---------------------------------
+ - READ INPUT DATA :         113 -
+  - vozocrtx: max    3.0575239658355713       min   -2.2932219505310059     
+  - Transport U: max    17773.905146789355       min   -12821.039236675688     
+  - vomecrty: max    2.0434014797210693       min   -5.0111312866210938     
+  - Transport V: max    19988.814356086365       min   -23312.658996868409     
+ 
+  - vovecrtz: max   0.12799109518527985       min  -0.10693221539258957     
+  - Vertical Transport: max    28121.290169927950       min   -23505.934367865000     
+ ---------------------------------
+ - READ INPUT DATA :         114 -
+  - vozocrtx: max    3.4140498638153076       min   -2.5636610984802246     
+  - Transport U: max    19550.688358999108       min   -13621.957577623296     
+  - vomecrty: max    2.9385626316070557       min   -5.5861201286315918     
+  - Transport V: max    26933.148072683805       min   -26077.535633399497     
+ 
+  - vovecrtz: max   0.13500288128852844       min  -0.14978598058223724     
+  - Vertical Transport: max    29684.988809194838       min   -32937.469276140931     
+ ---------------------------------
+ - READ INPUT DATA :         115 -
+  - vozocrtx: max    3.2455451488494873       min   -2.4274318218231201     
+  - Transport U: max    21014.151331369558       min   -16232.299976025464     
+  - vomecrty: max    3.0109210014343262       min   -5.2815279960632324     
+  - Transport V: max    28709.921575086686       min   -24725.957221633344     
+ 
+  - vovecrtz: max   0.19445753097534180       min  -0.18717582523822784     
+  - Vertical Transport: max    42724.821178921011       min   -41159.379329466814     
+ ---------------------------------
+ - READ INPUT DATA :         116 -
+  - vozocrtx: max    3.0182521343231201       min   -2.0531301498413086     
+  - Transport U: max    21454.661729806518       min   -20475.553075273139     
+  - vomecrty: max    2.9464766979217529       min   -4.3463997840881348     
+  - Transport V: max    29078.086520153502       min   -20433.068318640053     
+ 
+  - vovecrtz: max   0.20929293334484100       min  -0.17129483819007874     
+  - Vertical Transport: max    45984.349931420540       min   -37667.199881564375     
+ ---------------------------------
+ - READ INPUT DATA :         117 -
+  - vozocrtx: max    2.6227598190307617       min   -1.8349759578704834     
+  - Transport U: max    21714.451929891886       min   -19739.455343516733     
+  - vomecrty: max    2.5524880886077881       min   -2.8658125400543213     
+  - Transport V: max    28167.423800356246       min   -14037.353878522757     
+ 
+  - vovecrtz: max   0.19827973842620850       min  -0.13786947727203369     
+  - Vertical Transport: max    43549.287219080798       min   -30306.590695705949     
+ ---------------------------------
+ - READ INPUT DATA :         118 -
+  - vozocrtx: max    2.3208856582641602       min   -1.6246460676193237     
+  - Transport U: max    18519.211294628127       min   -18543.848950148018     
+  - vomecrty: max    2.2637591361999512       min   -1.3715181350708008     
+  - Transport V: max    23078.872484161529       min   -11974.948373588619     
+ 
+  - vovecrtz: max   0.14694991707801819       min  -0.15905284881591797     
+  - Vertical Transport: max    32275.431652500254       min   -35209.701538894551     
+ ---------------------------------
+ - READ INPUT DATA :         119 -
+  - vozocrtx: max    1.8213645219802856       min   -1.5041552782058716     
+  - Transport U: max    13110.620286418331       min   -17730.536675962798     
+  - vomecrty: max    2.0348150730133057       min   -1.7720230817794800     
+  - Transport V: max    19884.877785384699       min   -10293.339132098114     
+ 
+  - vovecrtz: max   7.62175396084785461E-002  min  -9.12827700376510620E-002
+  - Vertical Transport: max    16717.509614120710       min   -20221.860667416167     
+ ---------------------------------
+ - READ INPUT DATA :         120 -
+  - vozocrtx: max    1.9670027494430542       min   -2.3230311870574951     
+ -> Netcdf File - Successful Closing - ncid =      917504
+ 
+  - Transport U: max    11147.767608994780       min   -14296.304358560581     
+  - vomecrty: max    3.6939768791198730       min   -2.0029137134552002     
+ -> Netcdf File - Successful Closing - ncid =      983040
+ 
+  - Transport V: max    18788.124068154848       min   -9407.4594581817328     
+ 
+  - vovecrtz: max   0.10659707337617874       min  -9.40427631139755249E-002
+ -> Netcdf File - Successful Closing - ncid =     1048576
+ 
+  - Vertical Transport: max    22458.944888216411       min   -20827.589270174580     
+ 
+ ==================================
+ = MAIN LOOP ON CYCLE >>>>>> EXIT =
+ ==================================
+ 
+ -----------------------
+ = Writing Output Data =
+ -----------------------
+ 
+ --- Trajectory positions are saving:        65536
+   - X is done
+   - Y is done
+   - Z is done
+   - Time is done
+ 
+ --- Final positions are saving:        65536
+   - Final X is done
+   - Final Y is done
+   - Final Z is done
+   - Final Time is done
+   - Final Age is done
+   - Final Transport is done
+ 
+ -------------------------------
+ = Close Positions NetCDF File =
+ -------------------------------
+   - unit number       65536
+ 
+ ---------------------
+ = Deallocate Memory =
+ ---------------------
+ 
+  Ariane max allocatable memory is (in MB):    788.31949234008789     
+ 
+ =====================================================
+ =             -o0)  ARIANE Finish  (0o-             =
+ =====================================================
+ 
+  If Ariane results are used in your publication(s),
+ please feel free to reference Ariane and to send us 
+        your publication references (thanks).
+ 
+         http://www.univ-brest.fr/lpo/ariane

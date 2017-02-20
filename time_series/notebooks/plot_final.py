@@ -1,79 +1,26 @@
-'''
-from the chosen day, choose 1 particle trajectory based on the closest point from S15
-get a new set of point S for just that trajectory
-plot that trajectory
-find the points in S that closest to a) S15 and b)S16
-Show that in the graph
-'''
-
-from scipy.spatial import distance
-
-
-from pytz import timezone
-
-
-
-
 import datetime as dt
-
-import matplotlib
-
-import matplotlib as mat
-
-matplotlib.use('Agg')
-
-
-
-
-from matplotlib import pyplot as plt
-
-
-
-import matplotlib.pyplot as plt
-import matplotlib.colors as mpl_colors
-import matplotlib.colorbar as mpl_colorbar
-
+import os
 import netCDF4 as nc
+
 import numpy as np
-from salishsea_tools import geo_tools
-
-
-
-import shutil
-
-from salishsea_tools import viz_tools
-
+from scipy.spatial import distance
+import matplotlib
+from matplotlib import pyplot as plt
+import matplotlib.colors as mpl_colors
+from matplotlib import rc
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 
 
-
-
-import base
+from salishsea_tools import geo_tools
+from salishsea_tools import viz_tools
 
 
 plt.ioff()
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-from scipy.spatial import distance
-
-
-import datetime as dt
-
+# activate latex text rendering
+rc('text', usetex=True)
 
 
 class Traj:
@@ -123,60 +70,35 @@ class Traj:
 
 # In[ ]:
 
-def param( ):
+def param(start, length):
     
-    
-    
-
-    
-    
+  
     
     COL = 1
-    
-    delta = 1/3 #hours. we get this from ariane
-    
-    
-    
 
-    
-    tt = 5
-    
-    #reference: 14 days
-    
-    ratio = 5/14
-    
-    total = int(delta**(-1) * 24 * tt)
+
     
     size = 40
     
-    fontsize = 50
+    fontsize = 70
     
     
     
-    mat.rcParams.update({'font.size': fontsize})
+    matplotlib.rcParams.update({'font.size': fontsize})
     
     
-    ms = 25
-    
+    ms = 25 #marksize
 
-    
-    
-    
     LIN = 1
     
-    
 
-    
-
-
-    
     S15 = (-123.3114, 49.130412)
     S16 = (-123.317415, 49.1214)
     
     
     
     
-    bathy = nc.Dataset("/home/gsgarbi/analysis-giorgio/sequential/bathy_meter_SalishSea2.nc")
+    bathy = nc.Dataset("/ocean/gsgarbi/bathy_meter_SalishSea2.nc")
     model_lats = bathy.variables['nav_lat'][:]
     model_lons = bathy.variables['nav_lon'][:]
     depth = bathy.variables['Bathymetry'][:]
@@ -205,9 +127,9 @@ def param( ):
     deep = 110
     shallow = 35
     
-    time0 = 0
+    time0 = start
     
-    time14 = 5
+    time14 = length
     
     new_limx = (-124.5,-122.5)
     
@@ -215,13 +137,6 @@ def param( ):
 
     
     
-#    original_limx = (-123.5, -123.1)
-#    
-#    original_ticksx = (-123.5, -123.3, -123.1)
-#    
-#    original_limy = (49.05, 49.35)
-#    
-#    original_ticksy = (49.1, 49.2, 49.3)
     
     new_ticksx = (new_limx[0], float(sum(new_limx))/2, new_limx[1])
     
@@ -271,7 +186,7 @@ def param( ):
             
             cax_w = divider.append_axes("right", size="5%", pad=0.05)
             
-            cax_p = divider.append_axes("bottom", size="5%", pad=1.6)
+            cax_p = divider.append_axes("bottom", size="5%", pad=1.9)
             
             
             cb_w = fig.colorbar(mesh_w, cax = cax_w)
@@ -280,7 +195,7 @@ def param( ):
             
             cb_w.set_label("Water Depth (m)")
             
-            cb_p.set_label("will fix")
+            cb_p.set_label(r"Time \textbf{t} in days")
     
     
     
@@ -288,17 +203,7 @@ def param( ):
             mesh_w = axs[j,k].pcolormesh(model_lons, model_lats, depth, cmap=cmap_w)
     
     
-            
-            
-    
 
-            
-
-    
-                
-            
-            
-    
             
     
             axs[j,k].set_xlim(new_limx)
@@ -340,11 +245,13 @@ def param( ):
             textcoords='offset points', ha='left', va='top',
             #bbox=dict(boxstyle='round,pad=0.5', fc='yellow', alpha=0.5),
             arrowprops=dict(arrowstyle = '->', connectionstyle='arc3,rad=0'))
+            
+            viz_tools.set_aspect(axs[j,k])
         
     
     
     plt.tight_layout()
-    return total, axs, fig
+    return axs, fig
 
 # In[31]:
 
@@ -360,14 +267,9 @@ def param( ):
 
 
 
-def loadtraj(directory):
+def loadplot(directory):
 
 
-
-
-    
-
-    
     
     trajectories1 =[]
     init1 = []
@@ -389,23 +291,24 @@ def loadtraj(directory):
 
 
 
-def create_Traj(P, total, trajr):
+def get_lasts(trajr):
+    
     
 
-    
+    plot = []
  
-
+    for P in range (1, 25):
     
-    date_0 = first_date
-    otraj = Traj(t0 = date_0, traject=trajr) 
-
-    straj = otraj.sub_traj(P)
-
-
-
-    trajp = straj.traj[:total]
+        date_0 = first_date
+        otraj = Traj(t0 = date_0, traject=trajr) 
     
-    return trajp
+        straj = otraj.sub_traj(P)
+    
+    
+    
+        plot.append(straj.traj[-1])
+    
+    return plot
     
     
     
@@ -420,97 +323,24 @@ def create_Traj(P, total, trajr):
 
 # In[59]:
 
-def create_title(length, P, trajp):
+def create_title(first_date):
 
     
-    
 
-    
-    time_0 = first_date + dt.timedelta(hours = int(P))
-
-    depth_0 = -int(trajp[0][3])
+       
             
-            
-    title = "INITIAL TIME: {} (PDT) ;  LENGTH: {} ; INITIAL DEPTHS(m): {} ".format(time_0 + dt.timedelta(hours = -8), length, depth_0)
+    title = r"Position after \textbf{t} " + "days for initial day {:%Y/%m/%d} ".format(first_date)
 
     
     return title
-# In[60]:
-
-# fig = plt.figure(figsize = (size, size))
-
-
-# top = 0.95
-
-# vert = 0.07
-
-# rig = 0.1
-
-# hei = 0.03
-
-# wid = 1.5
-
-
-
-# part = fig.add_axes((rig,top,wid,hei))
-# norm = mpl_colors.Normalize(vmin=deep, vmax=shallow)
-# cb1 = mpl_colorbar.ColorbarBase(part, cmap=cmap, norm=norm,  orientation = "horizontal")
-# cb1.set_label('Particle Depth (m)', fontsize = 50)
-
-# particlecb = fig
-
-# fig = plt.figure(figsize = (size, size))
-
-# water = fig.add_axes((rig,top,wid,hei))
-# cb_mesh = fig.colorbar(mesh, water, orientation = "horizontal" )
-# cb_mesh.set_label("Water Depth (m)", fontsize = 50)
-
-# watercb = fig
-
-
-# In[61]:
-
 
     
-
-    
-
-    
-    
-
-
-
-# In[ ]:
-
-
-
-
-# In[ ]:
-
-
-
-
-# In[62]:
-#
-#south = []
-#for j in range(LIN):
-#    for k in range(COL):
-#            for i in range(len(trajectories[j][k])):
-#                if trajectories[j][k][i][2] < 50:
-#                    if trajectories[j][k][i][0] not in south:
-#                        south.append(trajectories[j][k][i][0])
-
-        
-
-
-# In[ ]:
-
-def makeplot(P, axs, title, trajp, fig):
+def makeplot(axs, title, totalplot, fig, t):
     
     j = 0
     k = 0
     
-    tfs = 55 #title font
+    tfs = 80 #title font
     
     axs[j,k].set_title(title, fontsize = tfs)
     
@@ -521,7 +351,7 @@ def makeplot(P, axs, title, trajp, fig):
     
     COL = 1
     
-    end = len(trajp)
+    end = len(totalplot)
     
     s= 300
     
@@ -533,107 +363,50 @@ def makeplot(P, axs, title, trajp, fig):
 
 
             
-        
-            for t in range(len(trajp)):
-                scaled_t = 1-(end - t)/ end
-                cmap = plt.cm.plasma_r
-                color = cmap(scaled_t)
-                axs[j,k].scatter(trajp[t][1], trajp[t][2], c = color, edgecolor = "none", s =s)
+            for i in range(len(totalplot)):
+                if totalplot[i] != "empty":
+                    for l in range(len(totalplot[i])):
+                        scaled_t = 1-(end - i)/ end
+                        cmap = plt.cm.plasma_r
+                        color = cmap(scaled_t)
+                        axs[j,k].scatter(totalplot[i][l][1], totalplot[i][l][2], c = color, edgecolor = "none", s =s)
     return fig           
 
 
-# In[ ]:
 
-#for Q in range (1,25):
-#    otraj = Traj(traject = trajr, t0 = date_0)
-#
-#
-#
-#
-#    straj = otraj.sub_traj(Q)
-#   
-#
-#    #print ('Closest point to Iona is: ', straj.closest_p(Iona), "at time ", straj.timec(Iona) +dt.timedelta(hours = -8))
-#
-#    print (Q, 'Closest point to S15 is: ', straj.closest_p(S15), "at time ", straj.timec(S15) +dt.timedelta(hours = -8))
-#
-#
-#
-#
-#
-#otraj = Traj(traject = trajr, t0 = date_0)
-#
-#
-#straj = otraj.sub_traj(P)
-#
-## print ("Iona is ", Iona)
-#
-## print ("S15 is: ", S15)
-#
-#
-## print ('Closest point to Iona is: ', straj.closest_p(Iona), "at time ", straj.timec(Iona) +dt.timedelta(hours = -8))
-#
-## print ('Closest point to S15 is: ', straj.closest_p(S15), "at time ", straj.timec(S15) +dt.timedelta(hours = -8))
-#
-#
-#
-#
-#xy=(-124.49,48.71)
-#
-#axs[j,k].annotate(
-#            "closest point to S15 on {} (PDT) \n".format(straj.timec(S15) + dt.timedelta(hours = -8)) +
-#            "closest point to S16 on {} (PDT)".format(straj.timec(S16) + dt.timedelta(hours = -8)),
-#            xy=xy, xytext=(50, 10),
-#            textcoords='offset points')
-
-
-# In[ ]:
+def savefig(start, length, fig):
     
-def savefig(fig):
-    
-    url = resultsdir + "/plot"
+    url = resultsdir + "/plot_{}-{} day(s)".format(start, length)
     
     fig.savefig(url)
     
     print ("plot was saved on ", url)
-    
 
-def go(d, r, f, p, l = "2 weeks", c=1,):
-    global directory, COL, first_date, length, P, resultsdir
-    directory = d
-    COL = c
-    first_date = f
-    length = l
-    P = p
-    resultsdir = r
+    
+start = 1   
+trajlength = 30
+
+first_date = dt.datetime(year = 2016, month = 7, day = 1)
+
+axs, fig = param(start, trajlength+1)
 
 
-    total, axs, fig = param()
+totalplot = [] 
+for d in range (start,trajlength+1):
     
-    print ("done1")
-    
-    
+    direct = "/ocean/gsgarbi/analysis-giorgio/time_series/results/2016/07/01/{} day(s)"
 
-    trajr = loadtraj (directory)
-    
-    print ("done2")
-    
+    if not os.path.isfile(direct.format(d)+"/traj.txt") or os.path.getsize(direct.format(d) + "/traj.txt") == 0:
+        totalplot.append("empty")
+        continue
 
-    trajp = create_Traj(P, total, trajr = trajr)
-    
-    print ("done3")
-    
-    title = create_title(length, P, trajp)
-    
-    print ("done4")
-    
-    makeplot(P= P, axs = axs, title = title, trajp = trajp, fig = fig)
-    
-    print ("plot was made")
-    
-    savefig(fig)    
-    
+    else:
+        trajr = loadplot(direct.format(d))
+        totalplot.append(get_lasts(trajr))
 
+title = create_title(first_date)
+    
+resultsdir = "/ocean/gsgarbi/analysis-giorgio/time_series/results/2016/07/01/"
+makeplot(axs, title, totalplot, fig, d)
 
-
-
+savefig(start, trajlength, fig)
