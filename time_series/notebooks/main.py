@@ -3,7 +3,7 @@ from start_runs import runlength
 
 if __name__ == "__main__":
     
-    runlength (day = {"year": 2016, "month": 7, "day": 14}, trajlength = 5, runlength = 7)
+    runlength (day = {"year": 2016, "month": 7, "day": 1}, trajlength = 200, runlength = 30)
     
     """to run from july 17 2016 to jul 18 2016
     with each of the 2 trajectory lengths equal to 1 day:
